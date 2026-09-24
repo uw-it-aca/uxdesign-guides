@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import PreviewBlock from "./PreviewBlock.vue";
-
   export default {
     props: {
       anchor: {

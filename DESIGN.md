@@ -122,10 +122,13 @@ rather than belonging to the one above it, so it always uses `my-5 w-50`. The la
 following sibling to space against. Re-check this whenever sections are added,
 removed, or reordered.
 
-`margin` utilities (`mb-*`) apply to content elements — headings, paragraphs,
-lists. `padding` utilities (`p-*`, `px-*`, `py-*`) are reserved for block-level
-containers (`<div>`, `BCard`, wrapping components) and may be used freely there,
-independent of this scale.
+`margin` utilities (`mb-*`) carry all vertical rhythm — headings, paragraphs, lists,
+list items, and `section`s. `padding` utilities (`p-*`, `px-*`, `py-*`) are used
+**sparingly**, and only as inset for a container that has its own surface — primarily
+cards (`BCard` with `body-class="p-4"`), occasionally a tinted `<div>`. Padding is
+inset, not rhythm: never use `pb-*` on an `<li>`, heading, or paragraph to open up a
+list or a section. Layout scaffolding (a shell's `py-5` gutter, a sticky sidebar
+offset) is container chrome and sits outside this scale.
 
 **Grid.** Bootstrap 5's 12-column grid with default breakpoints: `xs` ≥ 0, `sm` ≥
 576px, `md` ≥ 768px, `lg` ≥ 992px, `xl` ≥ 1200px, `xxl` ≥ 1400px. Components
@@ -218,6 +221,13 @@ See the [Bootstrap Icons library](https://icons.getbootstrap.com/).
   component usage before inventing a pattern.
 - Use Subdued color groups by default; reserve Prominent for real emphasis.
 - Set `margin-bottom` only, and omit the margin class on the last section in a group.
+- Use `margin` (`mb-*`) for all vertical space between block elements — headings,
+  paragraphs, lists, `<li>`s, and `section`s.
+- Reserve `padding` for the inside of a surface, mainly cards (`BCard` with
+  `body-class="p-4"`), and use it sparingly.
+- Wrap an `h2` and its content in `<section class="mb-4">`, and each `h3` sub-topic
+  inside it in a nested `<section class="mb-3">`, rather than spacing the headings
+  themselves apart.
 - Skip a utility class when Reboot's default already matches (`p`, `ul`, `ol`
   already have `1rem` bottom margin).
 - Apply `.lead` directly to the single intro `<p>`.
@@ -234,7 +244,10 @@ See the [Bootstrap Icons library](https://icons.getbootstrap.com/).
 - Don't add `margin-top` to content elements, and don't "fix" `hr`'s `my-5 w-50` to
   match the margin-bottom-only pattern — it's a deliberate exception.
 - Don't stack the last nested section's `mb-3` with its parent's `mb-4`.
-- Don't put `p-*` padding utilities on text-level elements; padding is for containers.
+- Don't put `p-*` padding utilities on text-level elements; padding is inset for
+  surfaces (cards), not vertical rhythm.
+- Don't use `pb-*` on `<li>`, headings, or paragraphs to space a list or section out —
+  that's `mb-*`'s job (`li` → `mb-1`).
 - Don't wrap a plain `<p>` in `<div class="lead">`, or use more than one `.lead` per page.
 - Don't introduce custom colors, spacer values, border radii, or z-index values.
 - Don't use brand colors for actionable elements, and don't add borders to brand or
