@@ -41,14 +41,14 @@
 
       <p>
         <BButton @click="toggleOffcanvas('second')"
-          >Show Solstice Chatbot</BButton
+          >Show Microsoft Form</BButton
         >
       </p>
 
       <BOffcanvas v-model="offcanvasStates.first" placement="end">
         <slot name="header"><h2>Purple Chatbot</h2></slot>
         <iframe
-          src="https://nebulaone-pilot.uw.edu/chat/41d6588d-541a-4e33-89d7-d290ff873be7/true?silentLogin=true&showModelName=true&showDisclaimer=false"
+          src="https://purple.uw.edu/chat/e0c28dde-a219-4199-9763-1f4dfd093927/true?silentLogin=true&showModelName=true&showDisclaimer=false"
           frameborder="0"
           title="Char's UX Agent"
           loading="lazy"
