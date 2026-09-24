@@ -5,7 +5,7 @@
 This document defines conventions for building and maintaining the `uxdesign-guides`
 documentation site itself (layouts, pages, and shared components under `src/`). It
 covers typography, vertical spacing, and component usage patterns for the site's own
-UI — the site also *documents* the Solstice Design System's components (under
+UI — the site also _documents_ the Solstice Design System's components (under
 `src/pages/solstice/`), but this file is about how this codebase is built, not the
 full Solstice component API (see the Solstice pages themselves, and
 `solstice-theme`/`solstice-vue`, for that).
@@ -26,13 +26,13 @@ minimal/unused).
 Bootstrap 5's predefined type scale is used, layered with `solstice-theme` font
 utilities (`ff-encode-sans`, `ff-open-sans`).
 
-| Element | Class                               | Notes                                    |
-| ------- | ----------------------------------- | ----------------------------------------- |
-| h1      | `display-5 fw-bold ff-encode-sans`  | Page title, set by `DefaultLayout`'s `#lead` slot |
-| h2      | `display-6 ff-encode-sans`          | Top-level section heading                 |
-| h3      | `fw-medium ff-encode-sans`          | Sub-section heading                       |
-| h4–h6   | `fw-bold`                           |                                            |
-| p       | (default) or `lead`                 | See below                                 |
+| Element | Class                              | Notes                                             |
+| ------- | ---------------------------------- | ------------------------------------------------- |
+| h1      | `display-5 fw-bold ff-encode-sans` | Page title, set by `DefaultLayout`'s `#lead` slot |
+| h2      | `display-6 ff-encode-sans`         | Top-level section heading                         |
+| h3      | `fw-medium ff-encode-sans`         | Sub-section heading                               |
+| h4–h6   | `fw-bold`                          |                                                   |
+| p       | (default) or `lead`                | See below                                         |
 
 ### Paragraphs: `lead` vs. default
 
@@ -54,29 +54,29 @@ collapsing.
 ### Bootstrap's default spacer scale
 
 | Utility suffix | rem value | px (at 16px root) |
-| --------------- | --------- | ------------------ |
-| `0`             | 0         | 0px                 |
-| `1`             | 0.25rem   | 4px                 |
-| `2`             | 0.5rem    | 8px                 |
-| `3`             | 1rem      | 16px                |
-| `4`             | 1.5rem    | 24px                |
-| `5`             | 3rem      | 48px                |
+| -------------- | --------- | ----------------- |
+| `0`            | 0         | 0px               |
+| `1`            | 0.25rem   | 4px               |
+| `2`            | 0.5rem    | 8px               |
+| `3`            | 1rem      | 16px              |
+| `4`            | 1.5rem    | 24px              |
+| `5`            | 3rem      | 48px              |
 
 Available as `mt-{0-5}`, `mb-{0-5}`, `my-{0-5}` (and `m-*` shorthand).
 
 ### Spacing scale for content
 
-| Element                      | margin-top    | margin-bottom     | Utility class needed?                                                                                                                                                          |
-| ----------------------------- | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `h1`                          | none          | `mb-3` (1rem)      | Yes — Reboot's default `h1` margin-bottom is `0.5rem`, so `mb-3` overrides it up to `1rem`.                                                                                       |
-| `h2`                          | none          | `mb-3` (1rem)      | Yes — same as `h1`, default is `0.5rem`.                                                                                                                                          |
-| `h3`                          | none          | `mb-2` (0.5rem)    | Technically matches Reboot's default already, but kept explicit for clarity/consistency with the scale.                                                                          |
-| `p`                           | none          | `mb-3` (1rem)      | No — Reboot already sets `margin-bottom: 1rem` on `p`. Don't add `mb-3`.                                                                                                          |
-| `ul` / `ol`                   | none          | `mb-3` (1rem)      | No — Reboot already sets `margin-bottom: 1rem` on `ul`/`ol`. Don't add `mb-3`.                                                                                                    |
-| `li`                          | none          | `mb-1` (0.25rem)   | Yes — Reboot sets no default bottom margin on `li`; only add this if items need extra breathing room.                                                                            |
-| `hr`                          | `my-5` (3rem) | `my-5` (3rem)      | Yes — exception to the margin-bottom-only rule. An `hr` sits between two content blocks rather than "belonging" to the one above it, so it always carries `my-5 w-50` (see `DefaultLayout`'s lead/content divider). |
-| `section` (h2-level)          | none          | `mb-4` (1.5rem)    | Yes — `section` has no default margin. Separates top-level `h2` sections from one another.                                                                                       |
-| `section` (h3-level, nested)  | none          | `mb-3` (1rem)      | Yes — for `<section>`s nested inside an `h2` section to group an `h3` with its content. One step smaller than the `h2`-level gap.                                                |
+| Element                      | margin-top    | margin-bottom    | Utility class needed?                                                                                                                                                                                               |
+| ---------------------------- | ------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `h1`                         | none          | `mb-3` (1rem)    | Yes — Reboot's default `h1` margin-bottom is `0.5rem`, so `mb-3` overrides it up to `1rem`.                                                                                                                         |
+| `h2`                         | none          | `mb-3` (1rem)    | Yes — same as `h1`, default is `0.5rem`.                                                                                                                                                                            |
+| `h3`                         | none          | `mb-2` (0.5rem)  | Technically matches Reboot's default already, but kept explicit for clarity/consistency with the scale.                                                                                                             |
+| `p`                          | none          | `mb-3` (1rem)    | No — Reboot already sets `margin-bottom: 1rem` on `p`. Don't add `mb-3`.                                                                                                                                            |
+| `ul` / `ol`                  | none          | `mb-3` (1rem)    | No — Reboot already sets `margin-bottom: 1rem` on `ul`/`ol`. Don't add `mb-3`.                                                                                                                                      |
+| `li`                         | none          | `mb-1` (0.25rem) | Yes — Reboot sets no default bottom margin on `li`; only add this if items need extra breathing room.                                                                                                               |
+| `hr`                         | `my-5` (3rem) | `my-5` (3rem)    | Yes — exception to the margin-bottom-only rule. An `hr` sits between two content blocks rather than "belonging" to the one above it, so it always carries `my-5 w-50` (see `DefaultLayout`'s lead/content divider). |
+| `section` (h2-level)         | none          | `mb-4` (1.5rem)  | Yes — `section` has no default margin. Separates top-level `h2` sections from one another.                                                                                                                          |
+| `section` (h3-level, nested) | none          | `mb-3` (1rem)    | Yes — for `<section>`s nested inside an `h2` section to group an `h3` with its content. One step smaller than the `h2`-level gap.                                                                                   |
 
 Because nothing carries `margin-top`, the visual gap before any element is simply the
 previous sibling's `margin-bottom` — no collapsing math needed.
@@ -163,11 +163,40 @@ collapse against at the sibling boundary — the gap is just that single
 
 ### Margin vs. padding
 
-This scale only uses `margin` utilities (`mb-*`) on content elements — headings,
-paragraphs, and lists. `padding` utilities (`p-*`, `px-*`, `py-*`) are reserved for
-block-level containers (`<div>`s, `BCard`, and other wrapping components). Text-level
-elements should never carry `p-*` classes; wrapping/container elements may use `p-*`
-freely, independent of this scale.
+**Vertical space between block elements is always `margin`, never `padding`.** This
+scale only uses `margin` utilities (`mb-*`) on content elements — headings,
+paragraphs, lists, list items, and `section`s.
+
+`padding` utilities (`p-*`, `px-*`, `py-*`) are used **sparingly**, and only for the
+_inside_ of a container that has its own surface — primarily cards (`BCard` with
+`body-class="p-4"`), and occasionally a tinted or bordered `<div>` where content
+would otherwise touch the edge. Padding is inset, not rhythm.
+
+Do not use padding to create the gap between two block elements. In particular, don't
+reach for `pb-*` on a `<li>`, heading, or paragraph to open up a list or a section —
+use `mb-*`:
+
+```html
+<!-- Don't: padding used as vertical rhythm -->
+<ul>
+  <li class="pb-2">First item</li>
+  <li class="pb-2">Second item</li>
+</ul>
+
+<!-- Do: margin used as vertical rhythm -->
+<ul>
+  <li class="mb-1">First item</li>
+  <li class="mb-1">Second item</li>
+</ul>
+```
+
+Two reasons this matters: padding is inside the element's box, so it enlarges hit
+areas and background/border extents in ways that surprise (visible as soon as a
+surface color or focus ring is added); and it can't collapse or be reasoned about with
+the rest of the scale, so mixing the two makes the vertical rhythm unpredictable.
+
+The exception is genuine layout scaffolding — a sticky sidebar offset or a layout
+shell's `py-5` gutter — which is container chrome, not content rhythm.
 
 ## Layouts
 

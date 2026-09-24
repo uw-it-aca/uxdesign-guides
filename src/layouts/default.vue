@@ -52,10 +52,7 @@
     </template>
     <template #main>
       <div class="row py-5">
-        <div :class="[mq.xlMinus || !$slots['toc'] ? 'col' : 'col-9']">
-          <div v-if="$slots['toc'] && mq.xlMinus" class="mb-5">
-            <slot name="toc" />
-          </div>
+        <div :class="[$slots['toc'] ? 'col-xxl-9 col-12' : 'col']">
 
           <div v-if="$slots.breadcrumb" class="mb-5">
             <slot name="breadcrumb" />
@@ -74,6 +71,11 @@
               </p>
             </slot>
             <hr class="my-5 w-50" />
+
+            <div v-if="$slots['toc']" class="d-xxl-none mb-5">
+              <slot name="toc" />
+            </div>
+
           </div>
 
           <slot name="content" />
@@ -84,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div v-if="$slots['toc'] && !mq.xlMinus" class="col-3">
+        <div v-if="$slots['toc']" class="d-none d-xxl-block col-3">
           <div class="sticky-top" style="margin-top: 11rem">
             <slot name="toc"></slot>
           </div>
@@ -120,7 +122,6 @@
       BDropdownItem,
       BDropdownDivider,
     },
-    inject: ["mq"],
     props: {
       pageTitle: {
         type: String,
