@@ -42,7 +42,7 @@ When verifying a change, prefer `npm run coverage` over `npm test` for a single 
 - Components live in `src/components/`; tests are colocated in `src/components/__tests__/<Component>.spec.js`.
 - When adding or changing a component, add/update its corresponding spec file.
 - Run `npm run oxlint` and `npm run oxfmt:check` before considering a change complete.
-- Typography, vertical spacing, layouts, and component usage conventions for this site are documented in `docs/design-system.md` — consult it before adding new pages or components.
+- Typography, vertical spacing, layouts, and component usage conventions for this site are documented in `docs/design-system.md` — consult it before adding new pages or components. `DESIGN.md` at the repo root is a pointer to that file for agents that look for design rules there.
 
 ## Testing
 
