@@ -711,6 +711,7 @@
   </Layout>
 </template>
 
+
 <script>
   import Layout from "@/layouts/default.vue";
   import { BCard, BLink } from "bootstrap-vue-next";

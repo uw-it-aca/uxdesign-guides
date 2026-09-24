@@ -149,7 +149,7 @@
       <NavCollapse menu="Components" slug="components" icon="bi-box">
         <ul class="nav flex-column mt-1">
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Actions" slug="actions">
+            <NavCollapse menu="Actions" slug="solstice/components/actions" sub>
               <ul class="nav flex-column small mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -170,10 +170,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Text" slug="text">
+            <NavCollapse menu="Text" slug="text" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -196,10 +196,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Forms" slug="forms">
+            <NavCollapse menu="Forms" slug="forms" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -215,7 +215,7 @@
                   <BLink
                     class="nav-link rounded-3 text-opacity-75 fw-lighter bg-white-hover bg-opacity-10-hover text-white"
                     exact-active-class="bg-white bg-opacity-10 text-opacity-100"
-                    to="/solstice/components/forms/select"
+                    to="/solstice/components/forms/textarea"
                     style="padding-left: 50px"
                   >
                     Textarea
@@ -235,7 +235,7 @@
                   <BLink
                     class="nav-link rounded-3 text-opacity-75 fw-lighter bg-white-hover bg-opacity-10-hover p text-white"
                     exact-active-class="bg-white bg-opacity-10 text-opacity-100"
-                    to="/solstice/components/forms/select"
+                    to="/solstice/components/forms/submit"
                     style="padding-left: 50px"
                   >
                     Submit
@@ -292,10 +292,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Surfaces" slug="surfaces">
+            <NavCollapse menu="Surfaces" slug="surfaces" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -318,10 +318,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Layouts" slug="layouts">
+            <NavCollapse menu="Layouts" slug="layouts" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -344,10 +344,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Navigation" slug="navigation">
+            <NavCollapse menu="Navigation" slug="navigation" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -370,10 +370,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Messaging & Status" slug="messaging">
+            <NavCollapse menu="Messaging & Status" slug="messaging" sub>
               <ul class="nav small flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -416,10 +416,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Disclosures" slug="disclosures">
+            <NavCollapse menu="Disclosures" slug="disclosures" sub>
               <ul class="small nav flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -462,10 +462,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Search & Filter" slug="search">
+            <NavCollapse menu="Search & Filter" slug="search" sub>
               <ul class="small nav flex-column mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -498,10 +498,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Utilities" slug="utilities">
+            <NavCollapse menu="Utilities" slug="utilities" sub>
               <ul class="nav flex-column small mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -544,10 +544,10 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
           <li class="nav-item mb-1">
-            <NavCollapseSub menu="Data Display" slug="data">
+            <NavCollapse menu="Data Display" slug="data" sub>
               <ul class="nav flex-column small mt-1">
                 <li class="nav-item mb-1">
                   <BLink
@@ -570,7 +570,7 @@
                   </BLink>
                 </li>
               </ul>
-            </NavCollapseSub>
+            </NavCollapse>
           </li>
         </ul>
       </NavCollapse>
@@ -582,13 +582,11 @@
   // import { getDevEnv } from "@/utils/global";
   import { BLink } from "bootstrap-vue-next";
   import NavCollapse from "@/components/NavCollapse.vue";
-  import NavCollapseSub from "@/components/NavCollapseSub.vue";
 
   export default {
     components: {
       BLink,
       NavCollapse,
-      NavCollapseSub,
     },
     data() {
       return {};

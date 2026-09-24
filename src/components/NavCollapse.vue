@@ -2,13 +2,15 @@
   <button
     :id="slug + 'Heading'"
     type="button"
-    class="d-flex justify-content-between align-items-center w-100 border-0 bg-transparent nav-link rounded-3 chevron bg-white-hover bg-opacity-10-hover text-white"
-    :class="{ 'bg-white bg-opacity-10': isExpanded }"
+    class="d-flex justify-content-between align-items-center nav-link rounded-3 chevron bg-white-hover bg-opacity-10-hover w-100 border-0 bg-transparent text-white"
+    :class="{ 'bg-opacity-10 bg-white': isExpanded }"
     :aria-expanded="isExpanded"
     :aria-controls="slug + 'Collapse'"
     @click="toggle"
   >
     <span
+      :class="{ 'small fw-medium': sub }"
+      :style="sub ? 'padding-left: 32px' : null"
       ><i
         v-if="icon"
         class="bi text-opacity-50 me-3 text-white"
@@ -55,6 +57,14 @@
         required: false,
         default: null,
       },
+      // Set true for a nested/sub-level trigger (e.g. component categories
+      // under "Components"). Applies smaller, indented text styling to
+      // distinguish it from a top-level menu trigger.
+      sub: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
     },
     data() {
       return {
@@ -72,7 +82,11 @@
           // not also expand deeper sections such as "/solstice/content/...".
           return this.match.includes(path);
         }
-        return path.includes("/" + this.slug);
+        // Match "/<slug>" as a full path segment, not merely a substring, so
+        // that e.g. slug="text" does not also match a sibling route segment
+        // like "/forms/textarea".
+        const escapedSlug = this.slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        return new RegExp("/" + escapedSlug + "(/|$)").test(path);
       },
       isExpanded() {
         return this.userToggled === null ? this.routeMatches : this.userToggled;

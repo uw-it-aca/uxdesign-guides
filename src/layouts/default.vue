@@ -51,20 +51,18 @@
       </BNav>
     </template>
     <template #main>
-      <div class="row">
+      <div class="row py-5">
         <div :class="[mq.xlMinus || !$slots['toc'] ? 'col' : 'col-9']">
           <div v-if="$slots['toc'] && mq.xlMinus" class="mb-5">
             <slot name="toc" />
           </div>
 
-          <div v-if="$slots.breadcrumb" class="row my-5">
-            <div class="col">
-              <slot name="breadcrumb" />
-            </div>
+          <div v-if="$slots.breadcrumb" class="mb-5">
+            <slot name="breadcrumb" />
           </div>
 
           <div v-if="$slots.lead">
-            <h1 class="display-5 ff-encode-sans fw-semibold my-5">
+            <h1 class="display-5 ff-encode-sans fw-semibold mb-3">
               {{ pageTitle }}
             </h1>
             <slot name="lead">
@@ -80,7 +78,7 @@
 
           <slot name="content" />
 
-          <div v-if="$slots.author" class="small py-1">
+          <div v-if="$slots.author" class="small">
             <div class="text-muted">
               Last updated by: <slot name="author" />
             </div>
