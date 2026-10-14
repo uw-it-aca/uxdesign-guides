@@ -40,9 +40,12 @@
               visual design of the headers in a subsequent design iteration.
             </li>
             <li>
-              Pay special attention to <a href="labels.html">labels</a> and
-              <a href="terminology.html">terminology</a> and to building
-              narrative cohesiveness when using headers.
+              Pay special attention to
+              <RouterLink to="/user-interface/labels">labels</RouterLink> and
+              <RouterLink to="/user-interface/terminology"
+                >terminology</RouterLink
+              >
+              and to building narrative cohesiveness when using headers.
             </li>
           </ul>
           <SHeading level="4">Typical Features</SHeading>

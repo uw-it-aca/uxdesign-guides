@@ -96,10 +96,68 @@ Should connect without a password prompt.
 
 ### Remote Server
 
-- Web root: `/rc00/d87/ux` (symlinked from `~/public_html`)
+- Web root: `~/public_html` → `/rc00/d87/ux/public_html`, a symlink to `/hw00/d87/ux`
+  (`/rc00/d87/ux` is the account home and is not served)
 - Site URL: https://depts.washington.edu/ux/
 - Vanity URL: https://uxdesign.uw.edu/
 
 ### Vite Base Path
 
-The `base` option in `vite.config.js` must match the subpath on the server (`/ux/`).
+The `base` option in `vite.config.js` is set to `/ux/` to match the subpath on
+the server, so asset URLs are baked as `/ux/assets/…` at build time. It is
+applied to builds only (`command === "build"`); the dev server stays at `/`, so
+`npm run dev` serves plain `http://localhost:5173/` URLs. `npm run preview`
+serves the real build and therefore does use `/ux/`.
+
+The same directory is served at **two mount points**:
+
+| URL                              | Mount                              |
+| -------------------------------- | ---------------------------------- |
+| https://depts.washington.edu/ux/ | canonical, matches `base`          |
+| https://uxdesign.uw.edu/         | UW URL masking, at the host's root |
+
+On the masked vanity host there is no `/ux/` prefix, so two things bridge the
+gap. The generated `.htaccess` strips the prefix when `HTTP_HOST` is a masked
+host, which lets the baked-in asset URLs resolve; and `src/router/base.js`
+resolves the router base against the current path, so generated links stay
+clean on both (`/ux/ux-team` on depts, `/ux-team` on the vanity domain).
+
+Masked hostnames are declared via the plugin's `maskedHosts` option in
+`vite.config.js`.
+
+### Status Codes
+
+Because this is a single-page app served as static files, Apache needs rules to
+resolve deep links. `dist/.htaccess` is generated during `npm run build` by
+`vite-plugin-htaccess.js` from the actual `vue-router` route table:
+
+| Request                           | Response                            |
+| --------------------------------- | ----------------------------------- |
+| `/ux/assets/…`, `/ux/images/…`    | the file itself                     |
+| a known route, e.g. `/ux/ux-team` | `index.html` with **200**           |
+| anything else                     | `index.html` with a genuine **404** |
+
+Unknown URLs are handled by `ErrorDocument 404 /ux/index.html`, so the app shell
+still loads and renders the 404 page while the response carries a real 404
+status. Adding a page under `src/pages/` updates the rules on the next build.
+
+Legacy files from the previous static site still live in the web root and are
+served as-is by the file/directory passthrough rule, since SCP merges rather
+than replaces. Check for collisions before adding a page whose route matches an
+existing file or directory name.
+
+Verify after a deploy:
+
+```bash
+# canonical host
+curl -sI https://depts.washington.edu/ux/ux-team | head -1   # expect 200
+curl -sI https://depts.washington.edu/ux/nope    | head -1   # expect 404
+
+# masked vanity host
+curl -sI https://uxdesign.uw.edu/ux-team | head -1           # expect 200
+curl -sI https://uxdesign.uw.edu/nope    | head -1           # expect 404
+```
+
+This relies on `AllowOverride` permitting `mod_rewrite` and `ErrorDocument` in
+`.htaccess` on the server. The rules avoid `<If>` blocks, which would also
+require `AllowOverride All`.

@@ -29,7 +29,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/*
+          # `dist/*` would drop dotfiles, and v4 excludes hidden files by
+          # default — both would silently lose the generated .htaccess.
+          path: dist
+          include-hidden-files: true
 
   test:
     needs: build
@@ -75,6 +78,9 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: dist/*
-          target: /rc00/d87/ux
+          # The glob never matches dotfiles, so .htaccess is listed explicitly.
+          source: "dist/*,dist/.htaccess"
+          # public_html is a symlink to the web root (/hw00/d87/ux);
+          # /rc00/d87/ux itself is the account home and is not served.
+          target: /rc00/d87/ux/public_html
           strip_components: 1

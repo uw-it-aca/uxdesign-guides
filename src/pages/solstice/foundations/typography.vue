@@ -51,9 +51,13 @@
 
       <p>
         Please visit
-        <a href="/elements/heading" target="_blank">Heading</a>
+        <RouterLink to="/solstice/components/text/heading" target="_blank"
+          >Heading</RouterLink
+        >
         and
-        <a href="/elements/paragraph" target="_blank">Paragraph</a>
+        <RouterLink to="/solstice/components/text/paragraph" target="_blank"
+          >Paragraph</RouterLink
+        >
 
         pages for more details and code snippets.
       </p>
@@ -120,8 +124,10 @@
           shouldn&apos;t need to change the color of text, as it is defined in
           the Solstice style sheet and is an inherited property of HTML elements
           and/or Solstice and Bootstrap themes. Review the comprehensive
-          <a href="/foundations/color" target="_blank">Color</a> page for more
-          guidance.
+          <RouterLink to="/solstice/foundations/color" target="_blank"
+            >Color</RouterLink
+          >
+          page for more guidance.
         </li>
         <li class="pb-3">
           <strong>Text color and value pairings are accessible.</strong> All
@@ -326,8 +332,11 @@
             <span class="text-uppercase">AVOID</span> all caps.</strong
           >
           Headings may use title case, especially an <code>&lt;H1></code>/Page
-          title. Review <a href="/content/labels" target="_blank">Labels</a> for
-          more details.
+          title. Review
+          <RouterLink to="/solstice/content/labels" target="_blank"
+            >Labels</RouterLink
+          >
+          for more details.
         </li>
       </ul>
 
@@ -359,8 +368,10 @@
             >Text lines should ideally be limited to 45-85 characters.</strong
           >
           Review the
-          <a href="/foundations/layout" target="_blank">Layout</a> page for more
-          details.
+          <RouterLink to="/solstice/foundations/layout" target="_blank"
+            >Layout</RouterLink
+          >
+          page for more details.
         </li>
       </ul>
 
@@ -368,7 +379,10 @@
       <ul>
         <li>
           <strong>Avoid truncation, in any text elements.</strong> Review
-          <a href="/content/labels" target="_blank">Labels</a> for more details.
+          <RouterLink to="/solstice/content/labels" target="_blank"
+            >Labels</RouterLink
+          >
+          for more details.
         </li>
       </ul>
 

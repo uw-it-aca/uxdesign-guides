@@ -1,5 +1,11 @@
 <template>
-  <SSidebar :app-name="'Solstice'" :app-root-url="'/solstice'" :page-title="pageTitle">
+  <!-- $router.resolve() prepends the history base, so this is correct at both
+       mount points (/ux/ on depts, / on the vanity host) -->
+  <SSidebar
+    :app-name="'Solstice'"
+    :app-root-url="$router.resolve('/solstice').href"
+    :page-title="pageTitle"
+  >
     <template #navigation>
       <NavMenu />
     </template>

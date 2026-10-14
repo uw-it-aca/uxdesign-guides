@@ -28,7 +28,10 @@
             <li>
               <strong>Narrative + terminology</strong> — Pay special attention
               to using the correct
-              <a href="terminology.html">terminology</a> and
+              <RouterLink to="/user-interface/terminology"
+                >terminology</RouterLink
+              >
+              and
               <a href="/process-guides/create#narrative"
                 >building narrative cohesiveness</a
               >
@@ -169,10 +172,14 @@
 
           <SHeading level="2">Resources</SHeading>
           <ul>
-            <li><a href="terminology.html">Terminology</a></li>
             <li>
-              <a href="/process-guides/create"
-                >Building narrative cohesiveness</a
+              <RouterLink to="/user-interface/terminology"
+                >Terminology</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink to="/process-guides/create"
+                >Building narrative cohesiveness</RouterLink
               >
             </li>
             <li>

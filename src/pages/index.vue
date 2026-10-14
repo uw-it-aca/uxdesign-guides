@@ -34,7 +34,7 @@
               prototyping, testing, and continuous improvement.
             </p>
             <div class="text-end">
-              <BLink href="/process-guides/">Review process guides</BLink>
+              <BLink to="/process-guides">Review process guides</BLink>
             </div>
           </BCard>
         </div>
@@ -52,9 +52,7 @@
             </p>
 
             <div class="text-end">
-              <BLink href="/user-interface/"
-                >Review user interface guides</BLink
-              >
+              <BLink to="/user-interface">Review user interface guides</BLink>
             </div>
           </BCard>
         </div>
@@ -73,9 +71,7 @@
               they need, understand it quickly, and take action with confidence.
             </p>
             <div class="text-end">
-              <BLink href="/info-design/"
-                >Review information design guides</BLink
-              >
+              <BLink to="/info-design">Review information design guides</BLink>
             </div>
           </BCard>
         </div>
@@ -99,7 +95,7 @@
             Our UX Design Guides help teams turn user needs into clear, useful,
             that more teams can put user-centered design into practice.
           </p>
-          <p><BLink href="/ux-team/">Learn more about the UX team</BLink></p>
+          <p><BLink to="/ux-team">Learn more about the UX team</BLink></p>
         </div>
       </div>
     </template>

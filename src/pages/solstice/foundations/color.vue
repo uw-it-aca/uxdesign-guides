@@ -244,9 +244,10 @@
       <h3 class="fw-bold">Neutrals</h3>
       <p>
         Neutral colors are the default colors used for most
-        <BLink to="/patterns/surface" class="link-primary">surfaces</BLink>,
-        shadows, and
-        <BLink to="/foundations/typography" class="link-primary"
+        <BLink to="/solstice/components/surfaces" class="link-primary"
+          >surfaces</BLink
+        >, shadows, and
+        <BLink to="/solstice/foundations/typography" class="link-primary"
           >typography</BLink
         >. They don’t typically have a meaning associated with them, though they
         can imply things like disabled states.
@@ -386,8 +387,12 @@
 
       <p>
         Related components:
-        <BLink to="/elements/button" class="link-primary">Button</BLink>,
-        <BLink to="/elements/link" class="link-primary">Link</BLink>
+        <BLink to="/solstice/components/actions/button" class="link-primary"
+          >Button</BLink
+        >,
+        <BLink to="/solstice/components/actions/link" class="link-primary"
+          >Link</BLink
+        >
       </p>
 
       <CodeBlock>
@@ -545,9 +550,12 @@
 
       <p>
         Related components:
-        <BLink to="/patterns/messaging/alert" class="link-primary">Alert</BLink
+        <BLink to="/solstice/components/messaging/alert" class="link-primary"
+          >Alert</BLink
         >,
-        <BLink to="/patterns/messaging/badge" class="link-primary">Badge</BLink>
+        <BLink to="/solstice/components/messaging/badge" class="link-primary"
+          >Badge</BLink
+        >
       </p>
       <CodeBlock>
         <template #preview>
@@ -689,10 +697,15 @@
 
       <p>
         Related components:
-        <BLink to="/elements/button" class="link-primary">Button</BLink>,
-        <BLink to="/patterns/messaging/alert" class="link-primary">Alert</BLink
+        <BLink to="/solstice/components/actions/button" class="link-primary"
+          >Button</BLink
         >,
-        <BLink to="/patterns/messaging/badge" class="link-primary">Badge</BLink>
+        <BLink to="/solstice/components/messaging/alert" class="link-primary"
+          >Alert</BLink
+        >,
+        <BLink to="/solstice/components/messaging/badge" class="link-primary"
+          >Badge</BLink
+        >
       </p>
 
       <CodeBlock>
@@ -847,9 +860,12 @@
       </table>
       <p>
         Related components:
-        <BLink to="/patterns/messaging/alert" class="link-primary">Alert</BLink
+        <BLink to="/solstice/components/messaging/alert" class="link-primary"
+          >Alert</BLink
         >,
-        <BLink to="/patterns/messaging/badge" class="link-primary">Badge</BLink>
+        <BLink to="/solstice/components/messaging/badge" class="link-primary"
+          >Badge</BLink
+        >
       </p>
 
       <CodeBlock>
@@ -988,9 +1004,12 @@
 
       <p>
         Related components:
-        <BLink to="/patterns/messaging/alert" class="link-primary">Alert</BLink
+        <BLink to="/solstice/components/messaging/alert" class="link-primary"
+          >Alert</BLink
         >,
-        <BLink to="/patterns/messaging/badge" class="link-primary">Badge</BLink>
+        <BLink to="/solstice/components/messaging/badge" class="link-primary"
+          >Badge</BLink
+        >
       </p>
 
       <CodeBlock>
@@ -1111,7 +1130,9 @@
       </table>
       <p>
         Related components:
-        <BLink to="/patterns/messaging/badge" class="link-primary">Badge</BLink>
+        <BLink to="/solstice/components/messaging/badge" class="link-primary"
+          >Badge</BLink
+        >
       </p>
 
       <CodeBlock>

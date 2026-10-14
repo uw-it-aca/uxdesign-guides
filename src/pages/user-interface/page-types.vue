@@ -307,7 +307,11 @@
 
           <SHeading level="2">Resources</SHeading>
           <ul>
-            <li><a href="/user-interface/forms">Designing Forms</a></li>
+            <li>
+              <RouterLink to="/user-interface/forms"
+                >Designing Forms</RouterLink
+              >
+            </li>
           </ul>
         </div>
       </div>

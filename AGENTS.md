@@ -57,9 +57,14 @@ When verifying a change, prefer `npm run coverage` over `npm test` for a single 
 
 - CI/CD pipeline: `.github/workflows/cicd.yml`, triggered on push to `main` or `develop`.
 - Pipeline stages: `build` (npm run build, uploads `dist/` as artifact) → `test` (npm test, npm run coverage, Coveralls upload) → `deploy` (main branch only).
-- Deploy step uses `appleboy/scp-action` to copy `dist/*` to `ovid.u.washington.edu:/rc00/d87/ux` (web root, symlinked from `~/public_html`).
+- Deploy step uses `appleboy/scp-action` to copy `dist/*` plus `dist/.htaccess` to `ovid.u.washington.edu:/rc00/d87/ux/public_html`. That path is a symlink to the real web root (`/hw00/d87/ux`); `/rc00/d87/ux` itself is the account home and is **not** served, so do not use it as the deploy target.
 - Deploy uses SSH key secrets (`SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`) — never print or log these values.
-- Vite `base` path: `vite.config.js` currently has no `base` set. If one is ever added, it must be `/ux/` to match the server subpath — otherwise built asset URLs will break on the live site.
+- Vite `base` path: `vite.config.js` sets `base: "/ux/"` **for builds only** (`command === "build"`), matching the server subpath; dev stays at `/` so local URLs are clean. Do not change the build value — built asset URLs will break on the live site. `src/router/base.js` resolves the router base from `import.meta.env.BASE_URL` against the current path, so the app works at both mount points (see below).
+- The site is served at **two mount points** from one directory: `https://depts.washington.edu/ux/` (canonical, matches `base`) and `https://uxdesign.uw.edu/` (UW URL masking serves the same directory at the vanity host's root, with no `/ux/` prefix — verified via `HTTP_HOST`/`REQUEST_URI` on the server). The generated `.htaccess` strips the `/ux/` prefix when `HTTP_HOST` is a masked host, so the baked-in asset URLs resolve there too. Masked hosts are configured via the plugin's `maskedHosts` option.
+- The generated rules deliberately avoid `<If>` blocks, which need `AllowOverride All`; a single `ErrorDocument 404 /ux/index.html` works on both mounts because the internal redirect re-enters the rewrite rules and gets the prefix stripped.
+- `dist/.htaccess` is generated at build time by `vite-plugin-htaccess.js` from the real `vue-router` route table. Known routes are rewritten to `index.html` (HTTP 200); everything else falls through to `ErrorDocument 404 /ux/index.html`, which serves the SPA shell with a genuine 404. Routes listed in the plugin's `exclude` option (`/_templates`, `/solstice/secret`) still render client-side but respond 404, keeping them out of search indexes.
+- The `.htaccess` is a dotfile, which globs do not match: the artifact step needs `include-hidden-files: true` and the SCP step lists `dist/.htaccess` explicitly. Any change to either step must keep hidden files included, otherwise deep links break on deploy.
+- SCP merges into the web root rather than replacing it, so legacy files from the previous static site survive alongside the build and keep resolving via the file/directory passthrough rule. This is intentional; check for name collisions with new routes before adding pages.
 - Site: https://depts.washington.edu/ux/ (vanity: https://uxdesign.uw.edu/)
 
 ## Safety notes

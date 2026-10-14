@@ -235,7 +235,7 @@
       <CodeBlock>
         <template #preview>
           <BLink
-            to="/elements/link"
+            to="/solstice/components/actions/link"
             class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
           >
             <i class="bi bi-cloud-download me-1"></i>Download report

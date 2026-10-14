@@ -12,8 +12,8 @@
       <p class="lead" style="max-width: 85ch">
         This step is about continual improvement on your product or service,
         based on new information discovered through
-        <a href="/process-guides/validate" title="Validate your UX">
-          validation</a
+        <RouterLink to="/process-guides/validate" title="Validate your UX">
+          validation</RouterLink
         >.
       </p>
     </template>

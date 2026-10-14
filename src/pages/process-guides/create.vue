@@ -29,8 +29,8 @@
             At this point, you should clearly understand the use cases that your
             product needs to support; who you are designing the product for and
             what goals they are trying to accomplish. If these are not crystal
-            clear, then please read "<a href="understand.html"
-              >Understand the Problem Space</a
+            clear, then please read "<RouterLink to="/process-guides/understand"
+              >Understand the Problem Space</RouterLink
             >".
           </p>
           <p>
@@ -149,8 +149,10 @@
           </ol>
           <PageCallout>
             If you are not confident in your assumptions,
-            <a href="validate.html" title="How to Validate Your UX"
-              >validate them</a
+            <RouterLink
+              to="/process-guides/validate"
+              title="How to Validate Your UX"
+              >validate them</RouterLink
             >
             with your audiences.
           </PageCallout>
@@ -230,8 +232,10 @@
           <PageCallout>
             <p>
               If you are not confident in your solutions at any point,
-              <a href="validate.html" title="How to Validate Your UX"
-                >validate them</a
+              <RouterLink
+                to="/process-guides/validate"
+                title="How to Validate Your UX"
+                >validate them</RouterLink
               >
               with your audiences.
             </p>
@@ -282,8 +286,10 @@
 
           <PageCallout>
             If you are not confident in your solutions,
-            <a href="validate.html" title="How to Validate Your UX"
-              >validate them</a
+            <RouterLink
+              to="/process-guides/validate"
+              title="How to Validate Your UX"
+              >validate them</RouterLink
             >
             with your audiences, preferably with an interactive product.
           </PageCallout>
@@ -318,8 +324,10 @@
           <PageCallout>
             <p>
               This is a good time to fully
-              <a href="validate.html" title="How to Validate Your UX"
-                >validate</a
+              <RouterLink
+                to="/process-guides/validate"
+                title="How to Validate Your UX"
+                >validate</RouterLink
               >:
             </p>
             <ul>
@@ -355,8 +363,10 @@
                 <li>
                   Visuals typically are trying to communicate something to the
                   user. This is a good opportunity to
-                  <a href="validate.html" title="How to Validate Your UX"
-                    >validate</a
+                  <RouterLink
+                    to="/process-guides/validate"
+                    title="How to Validate Your UX"
+                    >validate</RouterLink
                   >
                   how well they are working, as well as testing that they don't
                   adversely affect the usability or accessibility of your
@@ -369,8 +379,10 @@
           <PageCallout>
             <p>
               This is a good time to fully
-              <a href="validate.html" title="How to Validate Your UX"
-                >validate</a
+              <RouterLink
+                to="/process-guides/validate"
+                title="How to Validate Your UX"
+                >validate</RouterLink
               >
               the out-of-box experience of your product prior to release.
             </p>

@@ -146,7 +146,7 @@
 
           <SHeading level="2">Resources</SHeading>
           <ul>
-            <li><a href="labels.html">Labels</a></li>
+            <li><RouterLink to="/user-interface/labels">Labels</RouterLink></li>
           </ul>
         </div>
       </div>

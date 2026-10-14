@@ -1,5 +1,11 @@
 <template>
-  <STopbarNeo :app-name="appName" :app-root-url="'/'" :page-title="pageTitle">
+  <!-- $router.resolve() prepends the history base, so the home link is
+       correct at both mount points (/ux/ on depts, / on the vanity host) -->
+  <STopbarNeo
+    :app-name="appName"
+    :app-root-url="$router.resolve('/').href"
+    :page-title="pageTitle"
+  >
     <template #navigation>
       <!-- MARL: proper BNav implementation  -->
       <BNav class="flex-column flex-md-row gap-md-5">
@@ -7,53 +13,50 @@
           text="UX Process Guides"
           toggle-class="text-white px-0"
         >
-          <BDropdownItem href="/process-guides/understand"
+          <BDropdownItem to="/process-guides/understand"
             >Understand</BDropdownItem
           >
-          <BDropdownItem href="/process-guides/create">Create</BDropdownItem>
-          <BDropdownItem href="/process-guides/validate"
-            >Validate</BDropdownItem
-          >
-          <BDropdownItem href="/process-guides/iterate">Iterate</BDropdownItem>
+          <BDropdownItem to="/process-guides/create">Create</BDropdownItem>
+          <BDropdownItem to="/process-guides/validate">Validate</BDropdownItem>
+          <BDropdownItem to="/process-guides/iterate">Iterate</BDropdownItem>
         </BNavItemDropdown>
         <BNavItemDropdown
           text="Interface Design Guides"
           toggle-class="text-white px-0"
         >
-          <BDropdownItem href="/user-interface/page-types"
+          <BDropdownItem to="/user-interface/page-types"
             >Page Types</BDropdownItem
           >
-          <BDropdownItem href="/user-interface/containers"
+          <BDropdownItem to="/user-interface/containers"
             >Containers</BDropdownItem
           >
-          <BDropdownItem href="/user-interface/forms">Forms</BDropdownItem>
-          <BDropdownItem href="/user-interface/labels">Labels</BDropdownItem>
-          <BDropdownItem href="/user-interface/terminology"
+          <BDropdownItem to="/user-interface/forms">Forms</BDropdownItem>
+          <BDropdownItem to="/user-interface/labels">Labels</BDropdownItem>
+          <BDropdownItem to="/user-interface/terminology"
             >Terminology</BDropdownItem
           >
-          <BDropdownItem href="/user-interface/color-icons"
+          <BDropdownItem to="/user-interface/color-icons"
             >Color &amp Icons</BDropdownItem
           >
         </BNavItemDropdown>
-        <BNavItem href="/info-design" link-class="text-white px-0"
+        <BNavItem to="/info-design" link-class="text-white px-0"
           >Information Design Guides</BNavItem
         >
         <BNavItemDropdown
           text="General Information"
           toggle-class="text-white px-0"
         >
-          <BDropdownItem href="/what-is-ux">What is UX?</BDropdownItem>
-          <BDropdownItem href="/why-do-ux">Why invest in UX?</BDropdownItem>
-          <BDropdownItem href="/ux-team">About the UX Team</BDropdownItem>
+          <BDropdownItem to="/what-is-ux">What is UX?</BDropdownItem>
+          <BDropdownItem to="/why-do-ux">Why invest in UX?</BDropdownItem>
+          <BDropdownItem to="/ux-team">About the UX Team</BDropdownItem>
           <BDropdownDivider />
-          <BDropdownItem href="/ux-help">UX Design Help</BDropdownItem>
+          <BDropdownItem to="/ux-help">UX Design Help</BDropdownItem>
         </BNavItemDropdown>
       </BNav>
     </template>
     <template #main>
       <div class="row py-5">
         <div :class="[$slots['toc'] ? 'col-xxl-9 col-12' : 'col']">
-
           <div v-if="$slots.breadcrumb" class="mb-5">
             <slot name="breadcrumb" />
           </div>
@@ -75,7 +78,6 @@
             <div v-if="$slots['toc']" class="d-xxl-none mb-5">
               <slot name="toc" />
             </div>
-
           </div>
 
           <slot name="content" />
