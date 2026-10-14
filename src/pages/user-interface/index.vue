@@ -23,14 +23,14 @@
             interaction in web sites and web applications.
           </p>
 
-          <div class="border p-2">
+          <PageCallout>
             Before making decisions about how to organize information and
             functions within your product or service, you should clearly
             understand the use cases that your product needs to support; who you
             are designing the product for and what goals they are trying to
             accomplish. If these are not crystal clear, then please read
             Understand Your Project.
-          </div>
+          </PageCallout>
         </div>
       </div>
 
@@ -114,11 +114,13 @@
   import Layout from "@/layouts/default.vue";
   import { BCard, BLink } from "bootstrap-vue-next";
   import { SHeading } from "solstice-vue";
+  import PageCallout from "@/components/PageCallout.vue";
 
   export default {
     name: "DocsIndex",
     components: {
       Layout,
+      PageCallout,
       BCard,
       BLink,
       SHeading,
