@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
 import VueRouter from "vue-router/vite";
 
-import htaccess from "./vite-plugin-htaccess";
+import htaccess from "./vite-plugin-htaccess.js";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
