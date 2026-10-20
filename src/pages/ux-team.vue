@@ -11,15 +11,14 @@
         <div class="col">
           <SHeading level="2">Why listen to us?</SHeading>
           <p>
-            UW-IT's Academic Experience Design & Delivery (AXDD) UX Team is
-            comprised of designers who have decades of professional experience
-            in applying User-Centered Design process to product development. In
-            addition we collaborate closely with skilled and experienced
-            researchers in the Assessment Team within our unit (AXDD). Our
-            award-winning products support staff, faculty, and students across
-            UW's three campuses. Additionally, we are a trusted campus partner,
-            representing the needs of campus users in consultations,
-            collaboration & leadership throughout the UW.
+            UWIT's Experience Design (XD) Team is comprised of designers who
+            have decades of professional experience in applying User-Centered
+            Design (UCD) process to product development. In addition we
+            collaborate closely with skilled and experienced researchers across
+            campus. Our award-winning products support staff, faculty, and
+            students across UW's three campuses. Additionally, we are a trusted
+            campus partner, representing the needs of campus users in
+            consultations, collaboration & leadership throughout the UW.
           </p>
 
           <SHeading level="3">Testimonials</SHeading>
@@ -37,7 +36,7 @@
             </li>
             <li>
               <p>
-                "We can’t thank your [UX and Assessment] team enough for your
+                "We can’t thank your [Design] team enough for your
                 support and guidance with this exercise. It allowed us to make
                 data-driven decisions and to effectively transition to the
                 design phase of our newsletter. Thanks again for your assistance
@@ -114,7 +113,7 @@
           </ul>
 
           <SHeading level="3">More about our UX team</SHeading>
-          <p><a href="https://medium.com/ux-uw">AXDD's UX Team Blog</a></p>
+          <p><a href="https://medium.com/ux-uw">XD's Team Blog</a></p>
         </div>
       </div>
     </template>

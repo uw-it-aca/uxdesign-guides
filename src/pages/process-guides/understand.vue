@@ -16,7 +16,7 @@
     </template>
 
     <template #content>
-      <div class="row mb-3">
+      <div class="row mb-3" style="max-width: 85ch;">
         <div class="col">
           <p>
             Here, you will define project scope and provide a basis for

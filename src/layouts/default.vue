@@ -56,7 +56,7 @@
     </template>
     <template #main>
       <div class="row py-5">
-        <div :class="[$slots['toc'] ? 'col-xxl-9 col-12' : 'col']">
+        <div :class="[$slots['toc'] ? 'col-xxl-9' : 'col']">
           <div v-if="$slots.breadcrumb" class="mb-5">
             <slot name="breadcrumb" />
           </div>
@@ -74,12 +74,14 @@
               </p>
             </slot>
             <hr class="my-5 w-50" />
-
-            <div v-if="$slots['toc']" class="d-xxl-none mb-5">
-              <slot name="toc" />
-            </div>
           </div>
 
+          <div v-if="$slots['toc']" class="d-xxl-none mb-5">
+            <!-- MARK: mobile toc -->
+            <slot name="toc" />
+          </div>
+
+          <!-- MARK: content -->
           <slot name="content" />
 
           <div v-if="$slots.author" class="small">
@@ -88,7 +90,9 @@
             </div>
           </div>
         </div>
+
         <div v-if="$slots['toc']" class="d-none d-xxl-block col-3">
+          <!-- MARK: desktop toc -->
           <div class="sticky-top" style="margin-top: 11rem">
             <slot name="toc"></slot>
           </div>

@@ -8,14 +8,14 @@
       </p>
     </template>
     <template #content>
-      <div class="row mb-3">
+      <div class="row mb-4">
         <div class="col">
           <SHeading level="2" class="mb-3">Explore our guides</SHeading>
-          <p>
-            Our UX Design Guides help teams turn user needs into clear, useful,
-            and consistent digital experiences. Explore practical guidance from
-            our UX team to plan your process, make informed design decisions,
-            and create products and services that work better for everyone.
+          <p class="mb-0" style="max-width: 85ch">
+            Written by UX professionals on the Experience Design (XD) team,
+            these guides share the methods and patterns we use every day. Use
+            them to plan your process, make informed design decisions, and build
+            products and services that work better for everyone.
           </p>
         </div>
       </div>
@@ -30,8 +30,9 @@
           >
             <SHeading level="3" class="mb-3">UX Process Guides</SHeading>
             <p class="flex-fill">
-              Plan and apply UCD activities, from discovery and research through
-              prototyping, testing, and continuous improvement.
+              Plan and run user-centered design (UCD) activities, from discovery
+              and research through prototyping, testing, and continuous
+              improvement.
             </p>
             <div class="text-end">
               <BLink to="/process-guides">Review process guides</BLink>
@@ -52,7 +53,7 @@
             </p>
 
             <div class="text-end">
-              <BLink to="/user-interface">Review user interface guides</BLink>
+              <BLink to="/user-interface">Review interface design guides</BLink>
             </div>
           </BCard>
         </div>
@@ -80,22 +81,28 @@
       <div class="row mb-3">
         <div class="col">
           <SHeading level="2" class="mb-3">Not sure where to begin?</SHeading>
-          <p>
-            Start with the challenge you’re trying to solve. Explore the guides
-            for practical direction, or connect with our UX team for help
-            identifying the right approach.
+          <p style="max-width: 85ch">
+            Start with the problem you’re trying to solve. If you’re planning
+            work or deciding what to do next, begin with the process guides. If
+            you’re designing screens, start with interface design. If people
+            can’t find or understand your content, start with information
+            design. Still unsure? Reach out to the XD team and we’ll help you
+            find the right approach.
           </p>
         </div>
       </div>
 
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2" class="mb-3">About the UX team</SHeading>
-          <p>
-            Our UX Design Guides help teams turn user needs into clear, useful,
-            that more teams can put user-centered design into practice.
+          <SHeading level="2" class="mb-3">About the XD team</SHeading>
+          <p style="max-width: 85ch">
+            UWIT’s Experience Design (XD) team is a group of UX professionals
+            with decades of experience applying user-centered design to products
+            used by students, faculty, and staff across UW’s three campuses. We
+            wrote these guides to share what we’ve learned, so that more teams
+            can put user-centered design into practice.
           </p>
-          <p><BLink to="/ux-team">Learn more about the UX team</BLink></p>
+          <p><BLink to="/ux-team">Learn more about the XD team</BLink></p>
         </div>
       </div>
     </template>
