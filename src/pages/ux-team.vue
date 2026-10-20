@@ -36,11 +36,11 @@
             </li>
             <li>
               <p>
-                "We can’t thank your [Design] team enough for your
-                support and guidance with this exercise. It allowed us to make
-                data-driven decisions and to effectively transition to the
-                design phase of our newsletter. Thanks again for your assistance
-                and partnership."
+                "We can’t thank your [Design] team enough for your support and
+                guidance with this exercise. It allowed us to make data-driven
+                decisions and to effectively transition to the design phase of
+                our newsletter. Thanks again for your assistance and
+                partnership."
               </p>
               <p>
                 - <strong>Michael Steigmeyer</strong>, Senior Internal
