@@ -10,7 +10,7 @@
       <div class="row mb-3">
         <div class="col">
           <SHeading level="2">Why listen to us?</SHeading>
-          <p>
+          <p style="max-width: 85ch">
             UWIT's Experience Design (XD) Team is comprised of designers who
             have decades of professional experience in applying User-Centered
             Design (UCD) process to product development. In addition we
@@ -22,7 +22,7 @@
           </p>
 
           <SHeading level="3">Testimonials</SHeading>
-          <ul>
+          <ul style="max-width: 85ch">
             <li>
               <p>
                 "They are praised for their expertise, their strong partnership

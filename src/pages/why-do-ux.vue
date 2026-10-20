@@ -12,7 +12,7 @@
       <div class="row mb-3">
         <div class="col">
           <SHeading level="2">ROI for your organization</SHeading>
-          <p>
+          <p style="max-width: 85ch">
             “Good user experience is clearly good for business. Studies show
             that companies that invest in UX see a lower cost of customer
             acquisition, lower support cost, increased customer retention and
@@ -24,7 +24,7 @@
             whopping 9,900 percent.” - Good UX Is Good Business, Andrew
             Kucheriavy, Forbes 2015
           </p>
-          <ul>
+          <ul style="max-width: 85ch">
             <li>
               Don’t waste time on what might not be used. Streamline development
               by building only what is needed, without bloat.
@@ -54,12 +54,12 @@
           </ul>
 
           <SHeading level="2">User's ROI</SHeading>
-          <p>
+          <p style="max-width: 85ch">
             "True user experience goes far beyond giving customers what they say
             they want, or providing checklist features." - The Definition of
             User Experience, Don Norman &amp; Jacob Nielsen
           </p>
-          <ul>
+          <ul style="max-width: 85ch">
             <li>A useful product that addresses their actual needs.</li>
             <li>
               A less frustrating experience that supports their natural approach

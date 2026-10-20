@@ -11,7 +11,7 @@
       <div class="row mb-3">
         <div class="col">
           <SHeading level="2">UX is a way of thinking</SHeading>
-          <p>
+          <p style="max-width: 85ch">
             User Experience Design (UX) is a way of thinking about your product
             or service differently — it is a human-centered perspective that
             puts the needs of people at the center of an iterative
@@ -19,7 +19,7 @@
             solutions onto your users, it is about building what your users
             actually need to accomplish their goals.
           </p>
-          <p>
+          <p style="max-width: 85ch">
             To design a great user experience, you need to understand who your
             users are, where they are coming from, what goals they are trying to
             accomplish, how they naturally set about accomplishing these goals,
@@ -29,7 +29,7 @@
             development efforts.
           </p>
 
-          <PageCallout>
+          <PageCallout style="max-width: 85ch">
             “User experience is about more than just ease of use, of course. It
             is about motivations, attitudes, expectations, behavioral patterns,
             and constraints. It is about the types of interactions people have,
@@ -39,13 +39,13 @@
             is about the cross-channel user journey, too.” - UX Matters
           </PageCallout>
 
-          <p>
+          <p style="max-width: 85ch">
             Ultimately, UX Design encapsulates a holistic view of users' entire
             experience as they go about accomplishing their goals through
             multiple workflows, across many platforms, channels and touchpoints.
           </p>
 
-          <p>
+          <p style="max-width: 85ch">
             Emerging fields like Service Design and Customer Experience Design
             share similar concerns as UX Design. But despite slight variations
             in focus (e.g. Service Design may focus more on back-end processes
