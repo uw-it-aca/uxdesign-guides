@@ -44,12 +44,7 @@
 </template>
 
 <script>
-  import Prism from "prismjs";
-  import "prismjs/components/prism-javascript";
-  import "prismjs/components/prism-json";
-  import "prismjs/components/prism-markup-templating";
-  import "prismjs/components/prism-scss";
-  import "prismjs/themes/prism.css";
+  import Prism from "@/utils/prism.js";
   import "prismjs/plugins/toolbar/prism-toolbar";
   import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 
