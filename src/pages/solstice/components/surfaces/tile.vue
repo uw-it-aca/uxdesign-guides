@@ -49,6 +49,8 @@
   import Layout from "@/layouts/solstice.vue";
   import CodeBlock from "@/components/CodeBlock.vue";
   import { BBreadcrumb, BBreadcrumbItem, BCard } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsSurfaceTile",
@@ -58,6 +60,8 @@
       BCard,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
     },
     data() {
       return {

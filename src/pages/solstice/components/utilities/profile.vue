@@ -109,6 +109,8 @@
   import CodeBlock from "@/components/CodeBlock.vue";
   import { SProfile } from "solstice-vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsTabs",
@@ -118,6 +120,8 @@
       SProfile,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
     },
     data() {
       return {

@@ -317,6 +317,7 @@
 
   import { STopbar } from "solstice-vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsTopbar",
@@ -327,6 +328,7 @@
       STopbar,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContentsItem,
     },
     data() {
       return {

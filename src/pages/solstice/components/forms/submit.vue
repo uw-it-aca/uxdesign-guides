@@ -3,9 +3,7 @@
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Components</BBreadcrumbItem>
-        <BBreadcrumbItem to="/solstice/components/forms"
-          >Forms</BBreadcrumbItem
-        >
+        <BBreadcrumbItem to="/solstice/components/forms">Forms</BBreadcrumbItem>
         <BBreadcrumbItem active>{{ pageTitle }}</BBreadcrumbItem>
       </BBreadcrumb>
     </template>
@@ -44,10 +42,20 @@
 <script>
   import Layout from "@/layouts/solstice.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
+  import { SColorMode } from "solstice-vue";
 
   export default {
     name: "DocsPatternsUtilitySearch",
-    components: { Layout, BBreadcrumb, BBreadcrumbItem },
+    components: {
+      Layout,
+      BBreadcrumb,
+      BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
+      SColorMode,
+    },
     data() {
       return {
         pageTitle: "Submit",

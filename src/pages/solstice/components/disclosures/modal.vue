@@ -90,6 +90,7 @@
     BButton,
     BModal,
   } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsModal" /* example: Docs--Folder--ComponentName */,
@@ -100,6 +101,7 @@
       BBreadcrumbItem,
       BButton,
       BModal,
+      PageContentsItem,
     },
     inject: ["mq"],
     data() {

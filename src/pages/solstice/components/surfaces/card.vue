@@ -402,6 +402,8 @@
     BCard,
     BLink,
   } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsCard",
@@ -413,6 +415,8 @@
       BCard,
       BButton,
       BLink,
+      PageContents,
+      PageContentsItem,
     },
     data() {
       return {

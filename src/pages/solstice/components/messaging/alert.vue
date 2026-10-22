@@ -563,6 +563,7 @@
     BBreadcrumbItem,
     BLink,
   } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsElementsAlert" /* example: Docs--Folder--ComponentName */,
@@ -575,6 +576,7 @@
       BBreadcrumb,
       BBreadcrumbItem,
       BLink,
+      PageContentsItem,
     },
     inject: ["mq"],
     data() {

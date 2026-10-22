@@ -42,10 +42,18 @@
 <script>
   import Layout from "@/layouts/solstice.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsMessaging",
-    components: { Layout, BBreadcrumb, BBreadcrumbItem },
+    components: {
+      Layout,
+      BBreadcrumb,
+      BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
+    },
     data() {
       return {
         pageTitle: "Menu",

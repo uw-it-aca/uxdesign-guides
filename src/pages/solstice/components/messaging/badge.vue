@@ -413,6 +413,7 @@
   // import UsageBlock from "@/components/UsageBlock.vue";
   import PageContents from "@/components/PageContents.vue";
   import Layout from "@/layouts/solstice.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsBadge" /* example: Docs--Folder--ComponentName */,
@@ -422,6 +423,7 @@
       BBreadcrumb,
       BBreadcrumbItem,
       BBadge,
+      PageContentsItem,
     },
     inject: ["mq"],
     data() {

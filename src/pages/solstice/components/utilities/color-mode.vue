@@ -45,10 +45,19 @@
   import Layout from "@/layouts/solstice.vue";
   import { SColorMode } from "solstice-vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsMessaging",
-    components: { Layout, SColorMode, BBreadcrumb, BBreadcrumbItem },
+    components: {
+      Layout,
+      SColorMode,
+      BBreadcrumb,
+      BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
+    },
     data() {
       return {
         pageTitle: "Color Mode",
