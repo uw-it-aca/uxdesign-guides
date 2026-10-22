@@ -17,7 +17,7 @@ export const routes = [
     component: () => import('/src/layouts/default.vue'),
     children: [
       { path: '', name: '/', component: () => import('/src/pages/index.vue') },
-      { path: 'ux-team', name: '/ux-team', component: () => import('/src/pages/ux-team.vue') },
+      { path: 'xd-team', name: '/xd-team', component: () => import('/src/pages/xd-team.vue') },
       { path: 'solstice', component: () => import('/src/pages/solstice.vue'),
         children: [
           { path: 'secret', name: '/solstice/secret', component: () => import('/src/pages/solstice/secret.vue') },
@@ -56,7 +56,7 @@ describe("flattenRoutes", () => {
     const paths = flattenRoutes(parseRoutes(AUTO_ROUTES));
 
     expect(paths).toContain("/");
-    expect(paths).toContain("/ux-team");
+    expect(paths).toContain("/xd-team");
     expect(paths).toContain("/solstice/secret");
   });
 
@@ -79,16 +79,16 @@ describe("toRewriteBranches", () => {
   });
 
   it("drops dynamic routes, leaving them to the 404 handler", () => {
-    expect(toRewriteBranches(["/:path(.*)", "/ux-team"])).toEqual(["ux-team"]);
+    expect(toRewriteBranches(["/:path(.*)", "/xd-team"])).toEqual(["xd-team"]);
   });
 
   it("drops excluded prefixes and their descendants", () => {
     const branches = toRewriteBranches(
-      ["/ux-team", "/solstice/secret", "/solstice/secret/deeper", "/solstice"],
+      ["/xd-team", "/solstice/secret", "/solstice/secret/deeper", "/solstice"],
       ["/solstice/secret"],
     );
 
-    expect(branches).toEqual(["solstice", "ux-team"]);
+    expect(branches).toEqual(["solstice", "xd-team"]);
   });
 
   it("de-duplicates and sorts branches", () => {
@@ -117,19 +117,19 @@ describe("hostConditions", () => {
 
 describe("renderHtaccess", () => {
   it("rewrites known routes to the app shell under base", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/");
+    const out = renderHtaccess(["xd-team"], "/ux/");
 
-    expect(out).toContain("RewriteRule ^(ux-team)/?$ /ux/index.html [L]");
+    expect(out).toContain("RewriteRule ^(xd-team)/?$ /ux/index.html [L]");
   });
 
   it("serves unknown paths as the shell with a real 404", () => {
-    expect(renderHtaccess(["ux-team"], "/ux/")).toContain(
+    expect(renderHtaccess(["xd-team"], "/ux/")).toContain(
       "ErrorDocument 404 /ux/index.html",
     );
   });
 
   it("passes real files and directories through untouched", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/");
+    const out = renderHtaccess(["xd-team"], "/ux/");
 
     expect(out).toContain("RewriteCond %{REQUEST_FILENAME} -f [OR]");
     expect(out).toContain("RewriteCond %{REQUEST_FILENAME} -d");
@@ -140,14 +140,14 @@ describe("renderHtaccess", () => {
   });
 
   it("omits the masked-host block by default", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/");
+    const out = renderHtaccess(["xd-team"], "/ux/");
 
     expect(out).not.toContain("HTTP_HOST");
     expect(out).not.toContain("RewriteRule ^ux/");
   });
 
   it("strips the base prefix on masked hosts", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/", {
+    const out = renderHtaccess(["xd-team"], "/ux/", {
       maskedHosts: ["uxdesign.uw.edu"],
     });
 
@@ -156,7 +156,7 @@ describe("renderHtaccess", () => {
   });
 
   it("orders the strip rule before the file passthrough", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/", {
+    const out = renderHtaccess(["xd-team"], "/ux/", {
       maskedHosts: ["uxdesign.uw.edu"],
     });
 
@@ -166,7 +166,7 @@ describe("renderHtaccess", () => {
   });
 
   it("skips the strip rule when the base is the site root", () => {
-    const out = renderHtaccess(["ux-team"], "/", {
+    const out = renderHtaccess(["xd-team"], "/", {
       maskedHosts: ["uxdesign.uw.edu"],
     });
 
@@ -175,14 +175,14 @@ describe("renderHtaccess", () => {
   });
 
   it("emits the CORS header only when an origin is given", () => {
-    expect(renderHtaccess(["ux-team"], "/ux/")).not.toContain("Header set");
+    expect(renderHtaccess(["xd-team"], "/ux/")).not.toContain("Header set");
     expect(
-      renderHtaccess(["ux-team"], "/ux/", { allowOrigin: "https://x.test" }),
+      renderHtaccess(["xd-team"], "/ux/", { allowOrigin: "https://x.test" }),
     ).toContain('Header set Access-Control-Allow-Origin "https://x.test"');
   });
 
   it("guards directives with the modules they need", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/", {
+    const out = renderHtaccess(["xd-team"], "/ux/", {
       allowOrigin: "https://x.test",
     });
 
@@ -191,7 +191,7 @@ describe("renderHtaccess", () => {
   });
 
   it("avoids <If>, which requires AllowOverride All", () => {
-    const out = renderHtaccess(["ux-team"], "/ux/", {
+    const out = renderHtaccess(["xd-team"], "/ux/", {
       maskedHosts: ["uxdesign.uw.edu"],
       allowOrigin: "https://x.test",
     });

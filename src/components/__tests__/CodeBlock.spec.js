@@ -61,4 +61,25 @@ describe("CodeBlock", () => {
     expect(wrapper.text()).toContain("JS");
     expect(wrapper.html()).toContain("<div>Script content</div>");
   });
+
+  it("displays the preview slot content in the .preview container", () => {
+    const wrapper = mount(CodeBlock, {
+      slots: { preview: "<button>Preview</button>" },
+    });
+    expect(wrapper.find(".preview button").exists()).toBe(true);
+  });
+
+  it("renders no optional sections when no slots are provided", () => {
+    const wrapper = mount(CodeBlock);
+    expect(wrapper.find(".fst-italic").exists()).toBe(false);
+    expect(wrapper.find(".preview").exists()).toBe(false);
+    expect(wrapper.text()).not.toContain("HTML");
+    expect(wrapper.text()).not.toContain("VUE");
+    expect(wrapper.text()).not.toContain("JS");
+  });
+
+  it("includes visually hidden 'Example:' text for screen readers", () => {
+    const wrapper = mount(CodeBlock);
+    expect(wrapper.find(".visually-hidden").text()).toBe("Example:");
+  });
 });

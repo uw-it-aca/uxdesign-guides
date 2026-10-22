@@ -120,7 +120,7 @@ On the masked vanity host there is no `/ux/` prefix, so two things bridge the
 gap. The generated `.htaccess` strips the prefix when `HTTP_HOST` is a masked
 host, which lets the baked-in asset URLs resolve; and `src/router/base.js`
 resolves the router base against the current path, so generated links stay
-clean on both (`/ux/ux-team` on depts, `/ux-team` on the vanity domain).
+clean on both (`/ux/xd-team` on depts, `/xd-team` on the vanity domain).
 
 Masked hostnames are declared via the plugin's `maskedHosts` option in
 `vite.config.js`.
@@ -134,7 +134,7 @@ resolve deep links. `dist/.htaccess` is generated during `npm run build` by
 | Request                           | Response                            |
 | --------------------------------- | ----------------------------------- |
 | `/ux/assets/…`, `/ux/images/…`    | the file itself                     |
-| a known route, e.g. `/ux/ux-team` | `index.html` with **200**           |
+| a known route, e.g. `/ux/xd-team` | `index.html` with **200**           |
 | anything else                     | `index.html` with a genuine **404** |
 
 Unknown URLs are handled by `ErrorDocument 404 /ux/index.html`, so the app shell
@@ -150,11 +150,11 @@ Verify after a deploy:
 
 ```bash
 # canonical host
-curl -sI https://depts.washington.edu/ux/ux-team | head -1   # expect 200
+curl -sI https://depts.washington.edu/ux/xd-team | head -1   # expect 200
 curl -sI https://depts.washington.edu/ux/nope    | head -1   # expect 404
 
 # masked vanity host
-curl -sI https://uxdesign.uw.edu/ux-team | head -1           # expect 200
+curl -sI https://uxdesign.uw.edu/xd-team | head -1           # expect 200
 curl -sI https://uxdesign.uw.edu/nope    | head -1           # expect 404
 ```
 

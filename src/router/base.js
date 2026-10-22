@@ -5,7 +5,7 @@
  * it under vite's `base` ("/ux/" in production), while the masked vanity host
  * (uxdesign.uw.edu) serves the same files from the site root. Choosing the
  * base from the current path keeps generated links correct and clean on both —
- * "/ux/ux-team" on depts, "/ux-team" on the vanity domain — without this
+ * "/ux/xd-team" on depts, "/xd-team" on the vanity domain — without this
  * module needing to know any hostname.
  *
  * Assets are unaffected: they keep the baked-in `base` prefix, and the

@@ -102,7 +102,7 @@
             wrote these guides to share what we’ve learned, so that more teams
             can put user-centered design into practice.
           </p>
-          <p><BLink to="/ux-team">Learn more about the XD team</BLink></p>
+          <p><BLink to="/xd-team">Learn more about the XD team</BLink></p>
         </div>
       </div>
     </template>
