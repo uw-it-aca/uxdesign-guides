@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/uw-it-aca/solstice-docs/badge.svg?branch=develop)](https://coveralls.io/github/uw-it-aca/solstice-docs?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/uw-it-aca/uxdesign-guides/badge.svg?branch=develop)](https://coveralls.io/github/uw-it-aca/uxdesign-guides?branch=develop)
 
 # uxdesign-guides
 
