@@ -95,10 +95,20 @@
     BButton,
     BOffcanvas,
   } from "bootstrap-vue-next";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsUtilityChatbot",
-    components: { Layout, BButton, BOffcanvas, BBreadcrumb, BBreadcrumbItem },
+    components: {
+      Layout,
+      BButton,
+      BOffcanvas,
+      BBreadcrumb,
+      BBreadcrumbItem,
+      PageContents,
+      PageContentsItem,
+    },
     data() {
       return {
         pageTitle: "Offcanvas",

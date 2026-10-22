@@ -621,6 +621,7 @@
   import PageContents from "@/components/PageContents.vue";
 
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsElementsFormsValidation",
@@ -630,6 +631,7 @@
       PageContents,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContentsItem,
     },
     inject: ["mq"],
     data() {

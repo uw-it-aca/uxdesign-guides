@@ -166,6 +166,7 @@
   // import UsageBlock from "@/components/UsageBlock.vue";
   import PageContents from "@/components/PageContents.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsTemplatesComponentName" /* example: Docs--Folder--ComponentName */,
@@ -176,6 +177,7 @@
       /* UsageBlock, */ PageContents,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContentsItem,
     },
     data() {
       return {

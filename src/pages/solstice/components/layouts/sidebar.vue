@@ -294,6 +294,7 @@
   import PageContents from "@/components/PageContents.vue";
   import { SSidebar } from "solstice-vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsSidebar",
@@ -304,6 +305,7 @@
       SSidebar,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContentsItem,
     },
     data() {
       return {

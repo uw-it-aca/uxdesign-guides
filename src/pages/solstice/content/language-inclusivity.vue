@@ -423,14 +423,16 @@
   import Layout from "@/layouts/solstice.vue";
   import UsageBlock from "@/components/UsageBlock.vue";
   import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
 
   export default {
-    name: "DocsPatternsMessaging",
+    name: "DocsContentLanguage",
     components: {
       Layout,
       UsageBlock,
       PageContents,
+      PageContentsItem,
       BBreadcrumb,
       BBreadcrumbItem,
     },

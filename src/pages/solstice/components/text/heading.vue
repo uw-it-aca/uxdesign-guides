@@ -282,6 +282,8 @@
   import PageContentsItem from "@/components/PageContentsItem.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
   import { SHeading } from "solstice-vue";
+  import CodeBlock from "@/components/CodeBlock.vue";
+  import UsageBlock from "@/components/UsageBlock.vue";
 
   export default {
     name: "DocsComponentsTextHeading",
@@ -292,6 +294,8 @@
       BBreadcrumb,
       BBreadcrumbItem,
       SHeading,
+      CodeBlock,
+      UsageBlock,
     },
     data() {
       return {

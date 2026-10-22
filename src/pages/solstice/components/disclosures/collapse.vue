@@ -125,20 +125,21 @@
     BCollapse,
     BLink,
   } from "bootstrap-vue-next";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsTemplatesComponentName" /* example: Docs--Folder--ComponentName */,
     inject: ["mq"],
     components: {
       Layout,
-      CodeBlock,
-      /* UsageBlock, */
+      CodeBlock /* UsageBlock, */,
       PageContents,
       BBreadcrumb,
       BBreadcrumbItem,
       BButton,
       BCollapse,
       BLink,
+      PageContentsItem,
     },
     data() {
       return {

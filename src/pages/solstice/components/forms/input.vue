@@ -922,6 +922,8 @@
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
   import { Tooltip } from "bootstrap";
   import UsageBlockRow from "@/components/UsageBlockRow.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
+  import CodeBlock from "@/components/CodeBlock.vue";
 
   export default {
     name: "DocsTemplatesComponentName" /* example: Docs--Folder--ComponentName */,
@@ -933,6 +935,9 @@
       PageContents,
       BBreadcrumb,
       BBreadcrumbItem,
+      PageContentsItem,
+      UsageBlockRow,
+      CodeBlock,
     },
     inject: ["mq"],
     data() {

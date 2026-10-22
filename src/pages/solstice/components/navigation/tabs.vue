@@ -137,6 +137,8 @@
   import CodeBlock from "@/components/CodeBlock.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
   import { STabsDisplay, STabsPanel, STabsList, STabsItem } from "solstice-vue";
+  import PageContents from "@/components/PageContents.vue";
+  import PageContentsItem from "@/components/PageContentsItem.vue";
 
   export default {
     name: "DocsPatternsTabs",
@@ -149,6 +151,8 @@
       STabsPanel,
       STabsList,
       STabsItem,
+      PageContents,
+      PageContentsItem,
     },
     data() {
       return {
