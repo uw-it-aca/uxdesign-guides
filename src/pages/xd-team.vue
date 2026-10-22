@@ -30,8 +30,8 @@
                 above and beyond expectations."
               </p>
               <p>
-                - Presentation of <strong>UW-IT's ACE Award</strong> to the AXDD
-                UX Team
+                - Presentation of <strong>UWIT's ACE Award</strong> to the
+                XD Team
               </p>
             </li>
             <li>
@@ -112,7 +112,7 @@
             </li>
           </ul>
 
-          <SHeading level="3">More about our UX team</SHeading>
+          <SHeading level="3">More about the XD team</SHeading>
           <p><a href="https://medium.com/ux-uw">XD's Team Blog</a></p>
         </div>
       </div>
@@ -136,7 +136,7 @@
     },
     data() {
       return {
-        pageTitle: "About the UX Team",
+        pageTitle: "About the XD Team",
       };
     },
     methods: {},

@@ -48,7 +48,7 @@
         >
           <BDropdownItem to="/what-is-ux">What is UX?</BDropdownItem>
           <BDropdownItem to="/why-do-ux">Why invest in UX?</BDropdownItem>
-          <BDropdownItem to="/ux-team">About the UX Team</BDropdownItem>
+          <BDropdownItem to="/xd-team">About the XD Team</BDropdownItem>
           <BDropdownDivider />
           <BDropdownItem to="/ux-help">UX Design Help</BDropdownItem>
         </BNavItemDropdown>
