@@ -1,6 +1,10 @@
-import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
-import {
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+
+import htaccess, {
   PRERENDER_DIR,
   flattenRoutes,
   hostConditions,
@@ -72,6 +76,16 @@ describe("flattenRoutes", () => {
     ]);
 
     expect(paths).toEqual([]);
+  });
+
+  it("treats a record without a path as its parent's path", () => {
+    expect(flattenRoutes([{ component: null }])).toEqual(["/"]);
+  });
+
+  it("keeps routes that render named views", () => {
+    expect(flattenRoutes([{ path: "/split", components: null }])).toEqual([
+      "/split",
+    ]);
   });
 
   it("tolerates a missing route list", () => {
@@ -337,5 +351,156 @@ describe("renderRobots", () => {
       "Sitemap: https://depts.washington.edu/ux/sitemap.xml",
     );
     expect(out).not.toMatch(/^Disallow/m);
+  });
+});
+
+describe("htaccess plugin", () => {
+  const AUTO_ROUTES_CODE = AUTO_ROUTES;
+  const config = (outDir) => ({ base: "/ux/", root: "/", build: { outDir } });
+
+  /** Run the hooks of a build and collect what the plugin emits. */
+  const build = (options, code = AUTO_ROUTES_CODE) => {
+    const plugin = htaccess(options);
+    const emitted = {};
+    const warnings = [];
+    const context = {
+      emitFile: ({ fileName, source }) => (emitted[fileName] = source),
+      warn: (message) => warnings.push(message),
+    };
+    plugin.configResolved(config("/dist"));
+    plugin.transform.handler.call(context, code);
+    plugin.generateBundle.call(context);
+    return { emitted, warnings };
+  };
+
+  it("applies to builds and to vite preview only", () => {
+    const { apply } = htaccess();
+
+    expect(apply({}, { command: "build" })).toBe(true);
+    expect(apply({}, { command: "serve", isPreview: true })).toBe(true);
+    expect(apply({}, { command: "serve", isPreview: false })).toBe(false);
+  });
+
+  it("only reads the generated route module", () => {
+    const { transform } = htaccess();
+
+    expect(transform.filter.id.test("\0vue-router/auto-routes")).toBe(true);
+    expect(transform.filter.id.test("/src/main.js")).toBe(false);
+  });
+
+  it("emits .htaccess from the route table and the resolved base", () => {
+    const { emitted, warnings } = build({ exclude: ["/solstice/secret"] });
+
+    expect(warnings).toEqual([]);
+    expect(Object.keys(emitted)).toEqual([".htaccess"]);
+    expect(emitted[".htaccess"]).toContain(
+      "RewriteRule ^(solstice|xd-team)/?$ /ux/index.html [L]",
+    );
+  });
+
+  it("prefers an explicit base over Vite's", () => {
+    const { emitted } = build({ base: "/other/" });
+
+    expect(emitted[".htaccess"]).toContain(
+      "ErrorDocument 404 /other/index.html",
+    );
+  });
+
+  it("targets the pre-rendered pages when asked to", () => {
+    const { emitted } = build({ prerendered: true });
+
+    expect(emitted[".htaccess"]).toContain(`/ux/${PRERENDER_DIR}/$1.html`);
+    expect(emitted[".htaccess"]).toContain("ErrorDocument 404 /ux/404.html");
+  });
+
+  it("emits sitemap.xml and robots.txt when given a site URL", () => {
+    const { emitted } = build({
+      siteUrl: "https://example.test/ux/",
+      exclude: ["/solstice/secret"],
+    });
+
+    expect(emitted["sitemap.xml"]).toContain(
+      "<loc>https://example.test/ux/xd-team</loc>",
+    );
+    expect(emitted["sitemap.xml"]).not.toContain("secret");
+    expect(emitted["robots.txt"]).toContain(
+      "Sitemap: https://example.test/ux/sitemap.xml",
+    );
+  });
+
+  it("warns and emits nothing when the route table can't be read", () => {
+    const { emitted, warnings } = build({}, "export const nope = 1");
+
+    expect(emitted).toEqual({});
+    expect(warnings).toEqual([
+      "could not read the route table: could not locate the routes array",
+      "no routes found; skipping .htaccess generation",
+    ]);
+  });
+
+  describe("preview server", () => {
+    let outDir;
+
+    beforeAll(() => {
+      outDir = fs.mkdtempSync(path.join(os.tmpdir(), "htaccess-preview-"));
+      fs.mkdirSync(path.join(outDir, PRERENDER_DIR));
+      fs.writeFileSync(path.join(outDir, "404.html"), "not found page");
+      fs.writeFileSync(
+        path.join(outDir, PRERENDER_DIR, "xd-team.html"),
+        "team",
+      );
+    });
+
+    afterAll(() => fs.rmSync(outDir, { recursive: true, force: true }));
+
+    /** Install the middleware and send one request through it. */
+    const request = (url, options = { prerendered: true }) => {
+      const plugin = htaccess(options);
+      const middlewares = [];
+      plugin.configResolved(config(outDir));
+      plugin.configurePreviewServer({
+        middlewares: { use: (fn) => middlewares.push(fn) },
+      });
+
+      const req = { url };
+      const res = {
+        headers: {},
+        setHeader(name, value) {
+          this.headers[name] = value;
+        },
+        end(body) {
+          this.body = String(body);
+        },
+      };
+      let passed = false;
+      middlewares.forEach((fn) => fn(req, res, () => (passed = true)));
+      return { middlewares, req, res, passed };
+    };
+
+    it("rewrites a route to its pre-rendered page", () => {
+      const { req, passed } = request("/xd-team");
+
+      expect(passed).toBe(true);
+      expect(req.url).toBe(`/${PRERENDER_DIR}/xd-team.html`);
+    });
+
+    it("keeps the query string and decodes the path", () => {
+      expect(request("/xd%2Dteam?tab=1").req.url).toBe(
+        `/${PRERENDER_DIR}/xd-team.html?tab=1`,
+      );
+    });
+
+    it("answers unknown paths with the 404 page and a 404 status", () => {
+      const { res, passed } = request("/nope");
+
+      expect(passed).toBe(false);
+      expect(res.statusCode).toBe(404);
+      expect(res.headers["Content-Type"]).toBe("text/html; charset=utf-8");
+      expect(res.body).toBe("not found page");
+    });
+
+    it("adds no middleware without pre-rendered pages", () => {
+      expect(request("/xd-team", {}).middlewares).toEqual([]);
+    });
   });
 });

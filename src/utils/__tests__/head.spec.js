@@ -39,6 +39,10 @@ describe("vnodeText", () => {
     expect(vnodeText(vnodes)).toBe("UX is a human-centered way. Really a link");
   });
 
+  it("skips elements without children", () => {
+    expect(vnodeText([h("p", ["one", h("br"), "two"])])).toBe("one two");
+  });
+
   it("returns an empty string for a missing slot", () => {
     expect(vnodeText(undefined)).toBe("");
   });

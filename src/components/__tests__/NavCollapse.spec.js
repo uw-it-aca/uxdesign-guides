@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
+import { nextTick, reactive } from "vue";
 import { createBootstrap } from "bootstrap-vue-next";
 import NavCollapse from "@/components/NavCollapse.vue";
 
@@ -192,5 +193,23 @@ describe("NavCollapse", () => {
       await wrapper.find("#formsHeading").trigger("click");
       expect(wrapper.find(".collapse").classes()).not.toContain("show");
     });
+  });
+
+  it("defers to the route again after a navigation", async () => {
+    const $route = reactive({ path: "/" });
+    const wrapper = mount(NavCollapse, {
+      props: { menu: "Content", slug: "content" },
+      global: { plugins: [createBootstrap()], mocks: { $route } },
+    });
+    const heading = wrapper.find("#contentHeading");
+
+    await heading.trigger("click");
+    expect(heading.attributes("aria-expanded")).toBe("true");
+
+    // navigating elsewhere drops the manual toggle
+    $route.path = "/other";
+    await nextTick();
+    await nextTick();
+    expect(heading.attributes("aria-expanded")).toBe("false");
   });
 });
