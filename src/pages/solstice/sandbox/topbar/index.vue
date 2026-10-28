@@ -119,7 +119,7 @@
         currentYear: new Date().getFullYear(),
       };
     },
-    created: function () {
+    mounted: function () {
       // constructs page title in the following format "Page Title - AppName"
       document.title = `${this.pageTitle} - ${this.appName}`;
     },

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -53,7 +53,6 @@
         page.
       </p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -68,6 +67,7 @@
     data() {
       return {
         pageTitle: "Solstice 101",
+        author: "Charlon Palacay",
       };
     },
   };

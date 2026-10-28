@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/process-guides"
@@ -53,7 +53,9 @@
             </li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2"
+            >How should you approach creating the product?</SHeading
+          >
           <SHeading level="3">Set yourself up for success.</SHeading>
           <ul>
             <li>
@@ -389,7 +391,9 @@
           </PageCallout>
         </div>
 
-        <SHeading level="2">Common Pitfalls</SHeading>
+        <SHeading level="2"
+          >What are common pitfalls when creating the product?</SHeading
+        >
         <div>
           <SHeading level="3">Process set up to fail</SHeading>
           <ul>
@@ -531,7 +535,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -560,13 +563,11 @@
     data() {
       return {
         pageTitle: "Create the Product",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

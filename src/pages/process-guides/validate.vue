@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/process-guides"
@@ -47,7 +47,9 @@
             inform marketing initiatives?
           </p>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2"
+            >How should you validate design decisions?</SHeading
+          >
           <ol>
             <li>
               <strong
@@ -359,7 +361,9 @@
             </li>
           </ol>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2"
+            >What are common pitfalls when validating designs?</SHeading
+          >
 
           <SHeading level="3">Process Pitfalls</SHeading>
           <ul>
@@ -553,7 +557,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -582,13 +585,11 @@
     data() {
       return {
         pageTitle: "Validate the Decisions",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

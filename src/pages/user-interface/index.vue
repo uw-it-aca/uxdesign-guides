@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Guidelines for how to best present functionality and organize
@@ -36,7 +36,9 @@
 
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2"
+            >What principles should guide interface design?</SHeading
+          >
           <p>
             Design and build in iterations — Follow a high-level approach
             described in “Create the Product”; this includes iteratively
@@ -75,7 +77,9 @@
 
         <div class="row mb-3">
           <div class="col">
-            <SHeading level="2">Common Pitfalls</SHeading>
+            <SHeading level="2"
+              >What are common interface design pitfalls?</SHeading
+            >
             <ul>
               <li>
                 Lack of clarity about the purpose of an interaction when making
@@ -106,7 +110,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -128,13 +131,11 @@
     data() {
       return {
         pageTitle: "Interface Design Guides",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

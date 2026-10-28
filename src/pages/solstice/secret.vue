@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -3086,7 +3086,6 @@
 
       <p class="fw-bold">bg-opacity-x-hover</p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -3111,6 +3110,7 @@
     data() {
       return {
         pageTitle: "Secret Page",
+        author: "Charlon Palacay",
       };
     },
   };

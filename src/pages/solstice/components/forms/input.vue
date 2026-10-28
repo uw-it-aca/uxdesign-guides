@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Components</BBreadcrumbItem>
@@ -909,8 +909,6 @@
         </template>
       </CodeBlock>
     </template>
-
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -920,7 +918,6 @@
   import UsageBlock from "@/components/UsageBlock.vue";
   import PageContents from "@/components/PageContents.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
-  import { Tooltip } from "bootstrap";
   import UsageBlockRow from "@/components/UsageBlockRow.vue";
   import PageContentsItem from "@/components/PageContentsItem.vue";
   import CodeBlock from "@/components/CodeBlock.vue";
@@ -943,14 +940,18 @@
     data() {
       return {
         pageTitle: "Input Fields",
+        author: "William Washington",
       };
     },
-    mounted() {
-      // enable bootstrap tooltips
+    async mounted() {
+      // enable bootstrap tooltips. bootstrap is loaded here rather than at the
+      // top of the file because it needs `document`, which does not exist
+      // while pages are pre-rendered at build time.
+      const { Tooltip } = await import("bootstrap");
       const tooltipTriggerList = document.querySelectorAll(
         '[data-bs-toggle="tooltip"]',
       );
-      const tooltipList = [...tooltipTriggerList].map(
+      [...tooltipTriggerList].forEach(
         (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
       );
     },

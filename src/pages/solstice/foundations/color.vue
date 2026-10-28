@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/foundations"
@@ -1482,7 +1482,6 @@
         single hue, and color lightness to indicate a range from low to high.
       </p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -1507,6 +1506,7 @@
     data() {
       return {
         pageTitle: "Color",
+        author: "Charlon Palacay",
         colorMode: "light",
       };
     },

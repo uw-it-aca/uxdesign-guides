@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Components are the re-usable user interface pieces. Components utilize
@@ -78,7 +78,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -95,6 +94,7 @@
     data() {
       return {
         pageTitle: "Components",
+        author: "Charlon Palacay",
       };
     },
     methods: {},

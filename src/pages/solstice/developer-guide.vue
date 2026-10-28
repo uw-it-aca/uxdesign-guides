@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -27,7 +27,6 @@
         fugiat.
       </p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -40,6 +39,7 @@
     data() {
       return {
         pageTitle: "Developer Guide",
+        author: "Charlon Palacay",
       };
     },
   };

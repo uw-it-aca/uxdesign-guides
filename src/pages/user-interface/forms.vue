@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/user-interface"
@@ -17,7 +17,9 @@
     <template #content>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2"
+            >What principles make forms easy to complete?</SHeading
+          >
           <SHeading level="3">General Approach</SHeading>
           <ul>
             <li>
@@ -58,7 +60,7 @@
               or not).
             </li>
           </ul>
-          <SHeading level="3">Mobile Considerations</SHeading>
+          <SHeading level="3">How should forms work on mobile?</SHeading>
           <ul>
             <li>
               <strong>Maximize selection</strong> — Minimize users having to
@@ -203,7 +205,9 @@
             <li>Labels to the right of the text inputs</li>
           </ul>
 
-          <SHeading level="3">Organizing Within Layouts</SHeading>
+          <SHeading level="3"
+            >How should you organize fields within a form?</SHeading
+          >
           <ul>
             <li>
               <strong>Use containers</strong> — Use headers to create sections
@@ -492,7 +496,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -519,13 +522,11 @@
     data() {
       return {
         pageTitle: "Forms",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

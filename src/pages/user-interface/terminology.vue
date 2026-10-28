@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/user-interface"
@@ -16,9 +16,9 @@
     <template #content>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">SubHeading</SHeading>
-
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2"
+            >How should you choose words for your interface?</SHeading
+          >
           <ul>
             <li>
               <strong>Be Active</strong> — Use calls to action (e.g., Register
@@ -151,7 +151,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -178,13 +177,11 @@
     data() {
       return {
         pageTitle: "Terminology",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

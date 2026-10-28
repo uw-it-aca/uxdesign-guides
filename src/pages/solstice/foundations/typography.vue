@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/foundations"
@@ -399,8 +399,6 @@
       <br />
       <hr />
     </template>
-
-    <template #author>Cayla Snooke</template>
   </Layout>
 </template>
 
@@ -422,6 +420,7 @@
     data() {
       return {
         pageTitle: "Typography",
+        author: "Cayla Snooke",
         colorMode: "light",
       };
     },
