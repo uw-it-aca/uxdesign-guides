@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Guidelines for how to best present functionality and organize
@@ -110,7 +110,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -132,6 +131,7 @@
     data() {
       return {
         pageTitle: "Interface Design Guides",
+        author: "William Washington",
       };
     },
     methods: {},

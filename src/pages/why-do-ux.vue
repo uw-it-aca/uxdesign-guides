@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         To create great UX, it will require investment in resources, process &
@@ -80,7 +80,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -100,6 +99,7 @@
     data() {
       return {
         pageTitle: "Why invest in UX?",
+        author: "William Washington",
       };
     },
     methods: {},

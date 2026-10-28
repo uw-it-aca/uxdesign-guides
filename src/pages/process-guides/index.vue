@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         The UCD process continuously aligns user needs and business goals
@@ -75,7 +75,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -97,6 +96,7 @@
     data() {
       return {
         pageTitle: "The Process of Creating UX",
+        author: "William Washington",
       };
     },
     methods: {},

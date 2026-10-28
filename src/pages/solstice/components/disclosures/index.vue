@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Components</BBreadcrumbItem>
@@ -58,7 +58,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -74,6 +73,7 @@
     data() {
       return {
         pageTitle: "Disclosures" /* TODO: Set a page title */,
+        author: "Charlon Palacay",
       };
     },
   };

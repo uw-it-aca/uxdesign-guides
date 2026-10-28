@@ -70,14 +70,14 @@
           <slot name="content" />
 
           <!-- MARK: last updated. The date matches the dateModified in the
-               page's structured data; the name comes from the #author slot -->
+               page's structured data; the name is the page's author -->
           <div v-if="modified || hasAuthor()" class="small py-1">
             <div class="text-muted">
               Last updated
               <time v-if="modified" :datetime="modified">{{
                 displayDate(modified)
               }}</time>
-              <template v-if="hasAuthor()"> by <slot name="author" /></template>
+              <template v-if="hasAuthor()"> by {{ author.trim() }}</template>
             </div>
           </div>
         </div>
@@ -120,6 +120,11 @@
         default: "Not specified",
         required: false,
       },
+      // name shown after the "Last updated" date, from the page's data()
+      author: {
+        type: String,
+        default: null,
+      },
       // meta description; defaults to the text of the #lead slot
       description: {
         type: String,
@@ -158,9 +163,9 @@
     },
     methods: {
       displayDate,
-      // the #author slot counts only if it has text, so an empty one shows no name
+      // an empty author shows no name
       hasAuthor() {
-        return vnodeText(this.$slots.author?.()) !== "";
+        return (this.author ?? "").trim() !== "";
       },
     },
   };

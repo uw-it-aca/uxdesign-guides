@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Connect with the UW community for professional guidance on design
@@ -78,7 +78,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -98,6 +97,7 @@
     data() {
       return {
         pageTitle: "UX Design Help",
+        author: "William Washington",
       };
     },
     methods: {},

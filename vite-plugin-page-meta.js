@@ -9,8 +9,12 @@
  * page's parents, which a page cannot know at render time, and articles carry
  * a `dateModified`.
  *
- * Titles come from the `pageTitle` in each page's `data()`. Dates come from
- * the page file's last git commit, and are left out when git history is not
+ * Titles come from the `pageTitle` in each page's `data()`. The date is the
+ * page's `lastReviewed` (also in `data()`, as `YYYY-MM-DD`) when it has one:
+ * authors set it when a change matters to readers, so typo fixes and
+ * reformatting don't make a page look freshly reviewed. Pages without one fall
+ * back to the author date of the file's last git commit, which survives
+ * rebases and cherry-picks. Git dates are left out when history is not
  * available or is shallow (a CI checkout with `fetch-depth: 1` would give every
  * page the date of the latest commit, which is wrong).
  *
@@ -51,8 +55,38 @@ export function extractTitle(source) {
 }
 
 /**
- * Parse `git log --format=%x00%cI --name-only` output into the newest commit
- * date per file. Git lists commits newest first, so the first date wins.
+ * The review date declared in a page's `data()`, e.g. `lastReviewed:
+ * "2026-10-22"`.
+ *
+ * @param {string} source contents of a `.vue` file
+ * @returns {string|null} the date as written, or null when there is none
+ */
+export function extractReviewed(source) {
+  // skips a commented-out line, like the hint in the page templates
+  const match = source.match(
+    /^(?:(?!\/\/).)*?\blastReviewed:\s*(["'`])((?:(?!\1).)*)\1/m,
+  );
+  return match ? match[2] : null;
+}
+
+/**
+ * Whether a string is a real calendar date written as `YYYY-MM-DD`.
+ *
+ * @param {string} date
+ * @returns {boolean}
+ */
+export function isCalendarDate(date) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!match) return false;
+  const [, year, month, day] = match.map(Number);
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+  return parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === day;
+}
+
+/**
+ * Parse `git log --format=%x00%aI --name-only` output into the newest author
+ * date per file. Author dates are not guaranteed to follow log order (a
+ * rebased commit keeps its original date), so the latest one wins.
  *
  * @param {string} log
  * @returns {Map<string, string>} file path -> ISO 8601 date
@@ -62,7 +96,11 @@ export function parseGitLog(log) {
   for (const entry of log.split("\0").slice(1)) {
     const [date, ...files] = entry.split("\n").map((line) => line.trim());
     for (const file of files) {
-      if (file && !dates.has(file)) dates.set(file, date);
+      if (!file) continue;
+      const known = dates.get(file);
+      if (known === undefined || Date.parse(date) > Date.parse(known)) {
+        dates.set(file, date);
+      }
     }
   }
   return dates;
@@ -81,7 +119,7 @@ function gitDates(root, dir) {
       return new Map();
     }
     return parseGitLog(
-      git("log", "--format=%x00%cI", "--name-only", "--", dir),
+      git("log", "--format=%x00%aI", "--name-only", "--", dir),
     );
   } catch {
     // not a git checkout, or git is not installed
@@ -92,9 +130,10 @@ function gitDates(root, dir) {
 /**
  * @param {string} root project root
  * @param {string} dir pages directory, relative to the root
+ * @param {(message: string) => void} [warn] reports an invalid `lastReviewed`
  * @returns {Record<string, { title: string|null, modified?: string }>}
  */
-export function collectPageMeta(root, dir) {
+export function collectPageMeta(root, dir, warn = () => {}) {
   const pagesDir = path.join(root, dir);
   const dates = gitDates(root, dir);
   const meta = {};
@@ -105,7 +144,14 @@ export function collectPageMeta(root, dir) {
     if (route === null) continue;
 
     const source = fs.readFileSync(path.join(pagesDir, file), "utf-8");
-    const modified = dates.get(path.posix.join(dir, file.replace(/\\/g, "/")));
+    const relative = path.posix.join(dir, file.replace(/\\/g, "/"));
+    const reviewed = extractReviewed(source);
+    if (reviewed !== null && !isCalendarDate(reviewed)) {
+      warn(`${relative}: lastReviewed "${reviewed}" is not a YYYY-MM-DD date`);
+    }
+    const modified = isCalendarDate(reviewed ?? "")
+      ? reviewed
+      : dates.get(relative);
     meta[route] = {
       title: extractTitle(source),
       ...(modified && { modified }),
@@ -136,7 +182,8 @@ export default function pageMeta({ dir = "src/pages" } = {}) {
 
     load(id) {
       if (id !== RESOLVED_ID) return undefined;
-      return `export default ${JSON.stringify(collectPageMeta(root, dir))};`;
+      const meta = collectPageMeta(root, dir, (message) => this.warn(message));
+      return `export default ${JSON.stringify(meta)};`;
     },
 
     // a renamed page or a changed title regenerates the module in dev

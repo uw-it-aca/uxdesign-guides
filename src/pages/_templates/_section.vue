@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/_templates">Templates</BBreadcrumbItem>
@@ -42,7 +42,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -58,6 +57,10 @@
     data() {
       return {
         pageTitle: "Pattern Name" /* TODO: Set a page title */,
+        // set when a change matters to readers (YYYY-MM-DD); without it the
+        // "Last updated" date is the date of the file's last git commit
+        // lastReviewed: "2026-10-28",
+        author: "Charlon Palacay",
       };
     },
   };

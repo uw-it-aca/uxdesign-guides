@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/content">Content</BBreadcrumbItem>
@@ -174,7 +174,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Leila, Cayla, William</template>
   </Layout>
 </template>
 
@@ -198,6 +197,7 @@
     data() {
       return {
         pageTitle: "Voice & Tone",
+        author: "Leila Li, Cayla Snooke, William Washington",
       };
     },
   };

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/_templates">Templates</BBreadcrumbItem>
@@ -107,8 +107,6 @@
         voluptate ducimus repellat necessitatibus?
       </p>
     </template>
-    <!-- add the page author, or leave this out to show no name:
-    <template #author>Your Name</template> -->
   </Layout>
 </template>
 
@@ -131,6 +129,12 @@
     data() {
       return {
         pageTitle: "Component Name",
+        // the page author, shown after the "Last updated" date; leave it
+        // empty to show no name, and don't publish a placeholder
+        author: "",
+        // set when a change matters to readers (YYYY-MM-DD); without it the
+        // "Last updated" date is the date of the file's last git commit
+        // lastReviewed: "2026-10-28",
       };
     },
   };

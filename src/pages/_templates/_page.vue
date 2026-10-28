@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       This is a directory index page... Lorem ipsum dolor sit amet consectetur
       adipisicing elit. Aliquid maiores quo consequatur, minima minus suscipit
@@ -19,7 +19,6 @@
       <h2 id="heading4">Heading3</h2>
       <p>Go to <a href="/_templates/component">Component</a></p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -33,6 +32,10 @@
     data() {
       return {
         pageTitle: "Page Title" /* TODO: asdlkfjasf */,
+        // set when a change matters to readers (YYYY-MM-DD); without it the
+        // "Last updated" date is the date of the file's last git commit
+        // lastReviewed: "2026-10-28",
+        author: "Charlon Palacay",
       };
     },
   };

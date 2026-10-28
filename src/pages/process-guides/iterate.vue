@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/process-guides"
@@ -184,7 +184,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -211,6 +210,7 @@
     data() {
       return {
         pageTitle: "Iterate on the Design",
+        author: "William Washington",
       };
     },
     methods: {},

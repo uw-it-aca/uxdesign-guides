@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Elements</BBreadcrumbItem>
@@ -611,7 +611,6 @@
         </li>
       </ul>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -637,6 +636,7 @@
     data() {
       return {
         pageTitle: "Form Validation",
+        author: "William Washington",
       };
     },
   };

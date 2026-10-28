@@ -156,10 +156,11 @@ a page out of search indexes. Canonical URLs point to
 
 Indexable pages also carry schema.org structured data (JSON-LD): the
 publishing organization, the site, the page as a `TechArticle` with its
-breadcrumb trail, and a `dateModified` taken from the page file's last git
-commit. Dates need full git history, so they are left out of builds from a
+breadcrumb trail, and a `dateModified`. That date is the page's `lastReviewed`
+(`YYYY-MM-DD` in its `data()`) when set, so authors can mark changes that matter
+to readers; otherwise it is the author date of the page file's last git commit. Dates need full git history, so they are left out of builds from a
 shallow clone. The same date is shown at the bottom of each page as
-"Last updated", followed by the name from the page's `#author` slot if it has one.
+"Last updated", followed by the `author` from the page's `data()` if it has one.
 
 The build also writes `sitemap.xml` (every pre-rendered page, as a canonical
 `https://depts.washington.edu/ux/…` URL) and `robots.txt` (all crawlers

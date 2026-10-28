@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Great user experiences (UX) aren't created by magic, but by a repeatable
@@ -106,7 +106,6 @@
         </div>
       </div>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -126,6 +125,7 @@
     data() {
       return {
         pageTitle: "Welcome to UX Design Guides",
+        author: "Charlon Palacay",
       };
     },
     methods: {},

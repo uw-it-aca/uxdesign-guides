@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Answer engine optimization (AEO) makes pages easy for AI answer engines
@@ -389,7 +389,6 @@
         </ul>
       </section>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -412,6 +411,8 @@
     data() {
       return {
         pageTitle: "Answer Engine Optimization",
+        lastReviewed: "2026-10-28",
+        author: "Charlon Palacay",
       };
     },
   };

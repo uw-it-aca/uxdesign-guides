@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/user-interface"
@@ -496,7 +496,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -523,6 +522,7 @@
     data() {
       return {
         pageTitle: "Forms",
+        author: "William Washington",
       };
     },
     methods: {},

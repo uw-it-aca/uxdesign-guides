@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Decades of user-centered design expertise serving the UW community.
@@ -117,7 +117,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -137,6 +136,7 @@
     data() {
       return {
         pageTitle: "About the XD Team",
+        author: "William Washington",
       };
     },
     methods: {},

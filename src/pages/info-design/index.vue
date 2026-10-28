@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         This guide offers simple principles and guidance for creating web
@@ -715,7 +715,6 @@
         </ul>
       </section>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -739,6 +738,7 @@
     data() {
       return {
         pageTitle: "Information Design",
+        author: "William Washington",
       };
     },
     methods: {},

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         UX is a human-centered way of thinking. It's about understanding
@@ -62,7 +62,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -84,6 +83,7 @@
     data() {
       return {
         pageTitle: "What is UX?",
+        author: "William Washington",
       };
     },
     methods: {},

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Components</BBreadcrumbItem>
@@ -359,7 +359,6 @@
         </p>
       </template>
     </template>
-    <template #author>Diego Bejarano</template>
   </Layout>
 </template>
 
@@ -393,6 +392,7 @@
     data() {
       return {
         pageTitle: "Button",
+        author: "Diego Bejarano",
       };
     },
   };

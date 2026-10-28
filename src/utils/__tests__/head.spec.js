@@ -241,6 +241,10 @@ describe("displayDate", () => {
     expect(displayDate("2026-10-22T23:30:00-07:00")).toBe("October 22, 2026");
   });
 
+  it("formats a date without a time", () => {
+    expect(displayDate("2026-10-22")).toBe("October 22, 2026");
+  });
+
   it("returns null without a date", () => {
     expect(displayDate(undefined)).toBe(null);
     expect(displayDate("not a date")).toBe(null);

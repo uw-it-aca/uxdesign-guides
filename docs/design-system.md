@@ -215,8 +215,8 @@ shell's `py-5` gutter — which is container chrome, not content rhythm.
 ## Layouts
 
 - **`src/layouts/default.vue`** — `STopbarNeo`-based shell used by general (non-Solstice)
-  guide pages. Provides `#navigation`, `#lead`, `#breadcrumb`, `#content`, `#toc`, and
-  `#author` slots. The top nav bar uses `BNav`/`BNavItemDropdown` and sits on the UW
+  guide pages. Provides `#navigation`, `#lead`, `#breadcrumb`, `#content`, and `#toc` slots,
+  and takes the page's `author` as a prop. The top nav bar uses `BNav`/`BNavItemDropdown` and sits on the UW
   brand purple, so nav links need a light foreground (`text-white`/`link-light`) for
   contrast.
 - **`src/layouts/solstice.vue`** — `SSidebar`-based shell used by all `/solstice/**`
