@@ -920,7 +920,6 @@
   import UsageBlock from "@/components/UsageBlock.vue";
   import PageContents from "@/components/PageContents.vue";
   import { BBreadcrumb, BBreadcrumbItem } from "bootstrap-vue-next";
-  import { Tooltip } from "bootstrap";
   import UsageBlockRow from "@/components/UsageBlockRow.vue";
   import PageContentsItem from "@/components/PageContentsItem.vue";
   import CodeBlock from "@/components/CodeBlock.vue";
@@ -945,12 +944,15 @@
         pageTitle: "Input Fields",
       };
     },
-    mounted() {
-      // enable bootstrap tooltips
+    async mounted() {
+      // enable bootstrap tooltips. bootstrap is loaded here rather than at the
+      // top of the file because it needs `document`, which does not exist
+      // while pages are pre-rendered at build time.
+      const { Tooltip } = await import("bootstrap");
       const tooltipTriggerList = document.querySelectorAll(
         '[data-bs-toggle="tooltip"]',
       );
-      const tooltipList = [...tooltipTriggerList].map(
+      [...tooltipTriggerList].forEach(
         (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
       );
     },

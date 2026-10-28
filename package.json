@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "preview": "vite preview --port 5050",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@unhead/vue": "^2.1.17",
     "@vueuse/core": "^15.0.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.2",
@@ -34,6 +35,7 @@
     "prismjs": "^1.30.0",
     "sass": "^1.105.2",
     "vite": "^8.3.4",
+    "vite-ssg": "^28.3.0",
     "vitest": "^5.0.5"
   }
 }

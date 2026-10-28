@@ -89,6 +89,8 @@
 <script>
   import { SColorMode, SSidebar, SHeading, SUser } from "solstice-vue";
   import NavMenu from "@/components/NavMenu.vue";
+  import pageMeta from "virtual:page-meta";
+  import { pageHead, summarize, vnodeText } from "@/utils/head.js";
 
   export default {
     name: "App",
@@ -106,6 +108,29 @@
         default: "Not specified",
         required: false,
       },
+      // meta description; defaults to the text of the #lead slot
+      description: {
+        type: String,
+        default: null,
+      },
+      // keep the page out of search indexes (e.g. the 404 page)
+      noindex: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    // title, description, canonical URL and Open Graph tags, rendered into the
+    // pre-rendered HTML at build time and kept up to date in the browser
+    head() {
+      return pageHead({
+        title: this.pageTitle,
+        siteName: "Solstice",
+        path: this.$route.path,
+        description:
+          this.description ?? summarize(vnodeText(this.$slots.lead?.())),
+        noindex: this.noindex,
+        pages: pageMeta,
+      });
     },
     data() {
       return {
@@ -113,12 +138,6 @@
         currentYear: new Date().getFullYear(),
         lastModified: null,
       };
-    },
-    mounted: function () {
-      // MARK: constructs page title in the following format "Page Title - AppName"
-      // as a default layout prop
-      document.title = `${this.pageTitle} - Solstice`;
-      //this.lastModified = new Date(document.lastModified).toLocaleString();
     },
   };
 </script>

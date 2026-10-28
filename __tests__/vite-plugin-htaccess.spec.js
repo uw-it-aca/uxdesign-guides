@@ -1,10 +1,16 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  PRERENDER_DIR,
   flattenRoutes,
   hostConditions,
+  isExcluded,
   parseRoutes,
   renderHtaccess,
+  renderRobots,
+  renderSitemap,
+  resolvePreviewPath,
+  staticPaths,
   toRewriteBranches,
 } from "../vite-plugin-htaccess";
 
@@ -97,6 +103,35 @@ describe("toRewriteBranches", () => {
 
   it("escapes regex metacharacters in paths", () => {
     expect(toRewriteBranches(["/a.b"])).toEqual(["a\\.b"]);
+  });
+});
+
+describe("isExcluded", () => {
+  it("matches an excluded prefix and its descendants only", () => {
+    const exclude = ["/solstice/secret"];
+
+    expect(isExcluded("/solstice/secret", exclude)).toBe(true);
+    expect(isExcluded("/solstice/secret/deeper", exclude)).toBe(true);
+    expect(isExcluded("/solstice/secretive", exclude)).toBe(false);
+    expect(isExcluded("/solstice", exclude)).toBe(false);
+  });
+
+  it("excludes nothing by default", () => {
+    expect(isExcluded("/xd-team")).toBe(false);
+  });
+});
+
+describe("staticPaths", () => {
+  it("keeps the static, public pages as absolute paths", () => {
+    const paths = staticPaths(flattenRoutes(parseRoutes(AUTO_ROUTES)), [
+      "/solstice/secret",
+    ]);
+
+    expect(paths).toEqual(["/", "/solstice", "/xd-team"]);
+  });
+
+  it("normalizes trailing slashes and de-duplicates", () => {
+    expect(staticPaths(["/a/", "/a", "//b"])).toEqual(["/a", "/b"]);
   });
 });
 
@@ -198,5 +233,109 @@ describe("renderHtaccess", () => {
 
     expect(out).not.toMatch(/<If\s/);
     expect(out).not.toContain("<Else>");
+  });
+
+  describe("with pre-rendered pages", () => {
+    const options = { prerendered: true, maskedHosts: ["uxdesign.uw.edu"] };
+
+    it("rewrites known routes to their pre-rendered page", () => {
+      expect(renderHtaccess(["xd-team"], "/ux/", options)).toContain(
+        `RewriteRule ^(xd-team)/?$ /ux/${PRERENDER_DIR}/$1.html [L]`,
+      );
+    });
+
+    it("serves the pre-rendered 404 page with a real 404", () => {
+      const out = renderHtaccess(["xd-team"], "/ux/", options);
+
+      expect(out).toContain("ErrorDocument 404 /ux/404.html");
+      expect(out).not.toContain("index.html");
+    });
+
+    it("orders routes after the strip rule and before the passthrough", () => {
+      const out = renderHtaccess(["xd-team"], "/ux/", options);
+      const route = out.indexOf("RewriteRule ^(xd-team)");
+
+      expect(out.indexOf("RewriteRule ^ux/(.*)$")).toBeLessThan(route);
+      expect(route).toBeLessThan(out.indexOf("REQUEST_FILENAME"));
+    });
+  });
+});
+
+describe("resolvePreviewPath", () => {
+  const files = new Set([
+    "/index.html",
+    "/404.html",
+    "/assets/app.css",
+    `/${PRERENDER_DIR}/xd-team.html`,
+    `/${PRERENDER_DIR}/process-guides.html`,
+  ]);
+  const isFile = (file) => files.has(file);
+  const resolve = (pathname) => resolvePreviewPath(pathname, "/ux/", isFile);
+
+  it("strips the baked-in base from asset URLs", () => {
+    expect(resolve("/ux/assets/app.css")).toEqual({
+      path: "/assets/app.css",
+      status: 200,
+    });
+  });
+
+  it("serves the home page at the root, with or without the base", () => {
+    expect(resolve("/")).toEqual({ path: "/index.html", status: 200 });
+    expect(resolve("/ux/")).toEqual({ path: "/index.html", status: 200 });
+    expect(resolve("/ux")).toEqual({ path: "/index.html", status: 200 });
+  });
+
+  it("serves known routes from their pre-rendered page", () => {
+    const page = { path: `/${PRERENDER_DIR}/xd-team.html`, status: 200 };
+
+    expect(resolve("/xd-team")).toEqual(page);
+    expect(resolve("/xd-team/")).toEqual(page);
+  });
+
+  it("does not mistake a similarly named route for the base", () => {
+    expect(resolve("/ux-help")).toEqual({ path: "/404.html", status: 404 });
+  });
+
+  it("serves the 404 page with a 404 for anything else", () => {
+    expect(resolve("/nope")).toEqual({ path: "/404.html", status: 404 });
+  });
+});
+
+describe("renderSitemap", () => {
+  const site = "https://depts.washington.edu/ux";
+
+  it("lists every path as an absolute canonical URL", () => {
+    const out = renderSitemap(["/", "/xd-team"], site);
+
+    expect(out).toContain(`<loc>${site}/</loc>`);
+    expect(out).toContain(`<loc>${site}/xd-team</loc>`);
+    expect(out.match(/<url>/g)).toHaveLength(2);
+  });
+
+  it("is a sitemaps.org urlset", () => {
+    const out = renderSitemap(["/"], site);
+
+    expect(out.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
+    expect(out).toContain(
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    );
+  });
+
+  it("escapes XML special characters", () => {
+    expect(renderSitemap(["/a&b"], site)).toContain(
+      `<loc>${site}/a&amp;b</loc>`,
+    );
+  });
+});
+
+describe("renderRobots", () => {
+  it("allows all crawlers and points to the sitemap", () => {
+    const out = renderRobots("https://depts.washington.edu/ux");
+
+    expect(out).toContain("User-agent: *\nAllow: /");
+    expect(out).toContain(
+      "Sitemap: https://depts.washington.edu/ux/sitemap.xml",
+    );
+    expect(out).not.toMatch(/^Disallow/m);
   });
 });
