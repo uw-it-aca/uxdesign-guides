@@ -41,7 +41,7 @@
             </li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2">How do you understand the problem space?</SHeading>
 
           <ol>
             <li>
@@ -192,7 +192,7 @@
             proceed.
           </PageCallout>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2">What are common pitfalls when defining the problem?</SHeading>
 
           <SHeading level="3">General Pitfalls</SHeading>
           <ul>

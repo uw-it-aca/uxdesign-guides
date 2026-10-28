@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v7
+        with:
+          # full history: each page's `dateModified` structured data is the
+          # date of its file's last commit (vite-plugin-page-meta.js), and a
+          # shallow clone has no per-file history, so dates would be left out
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v7

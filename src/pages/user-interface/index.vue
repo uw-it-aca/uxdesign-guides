@@ -36,7 +36,9 @@
 
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2"
+            >What principles should guide interface design?</SHeading
+          >
           <p>
             Design and build in iterations — Follow a high-level approach
             described in “Create the Product”; this includes iteratively
@@ -75,7 +77,9 @@
 
         <div class="row mb-3">
           <div class="col">
-            <SHeading level="2">Common Pitfalls</SHeading>
+            <SHeading level="2"
+              >What are common interface design pitfalls?</SHeading
+            >
             <ul>
               <li>
                 Lack of clarity about the purpose of an interaction when making

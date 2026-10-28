@@ -29,7 +29,7 @@
             <li>Make improvements based on current priorities.</li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2">How should you iterate on a design?</SHeading>
           <div>
             <SHeading level="3">Plan for continual improvement</SHeading>
             <ol>
@@ -119,7 +119,9 @@
             </ol>
           </div>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2"
+            >What are common pitfalls when iterating?</SHeading
+          >
           <div>
             <SHeading level="3">Lack of foresight</SHeading>
             <ul>

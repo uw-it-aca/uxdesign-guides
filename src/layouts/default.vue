@@ -84,9 +84,15 @@
           <!-- MARK: content -->
           <slot name="content" />
 
-          <div v-if="$slots.author" class="small">
+          <!-- MARK: last updated. The date matches the dateModified in the
+               page's structured data; the name comes from the #author slot -->
+          <div v-if="modified || hasAuthor()" class="small">
             <div class="text-muted">
-              Last updated by: <slot name="author" />
+              Last updated
+              <time v-if="modified" :datetime="modified">{{
+                displayDate(modified)
+              }}</time>
+              <template v-if="hasAuthor()"> by <slot name="author" /></template>
             </div>
           </div>
         </div>
@@ -114,7 +120,13 @@
   import { SColorMode, STopbarNeo, SHeading, SUser } from "solstice-vue";
   import NavMenu from "@/components/NavMenu.vue";
   import pageMeta from "virtual:page-meta";
-  import { pageHead, summarize, vnodeText } from "@/utils/head.js";
+  import {
+    displayDate,
+    pageHead,
+    pageModified,
+    summarize,
+    vnodeText,
+  } from "@/utils/head.js";
 
   export default {
     name: "App",
@@ -164,8 +176,20 @@
       return {
         // automatically set year
         currentYear: new Date().getFullYear(),
-        lastModified: null,
       };
+    },
+    computed: {
+      // ISO date of the page's last commit, if known (see vite-plugin-page-meta.js)
+      modified() {
+        return pageModified(this.$route.path, pageMeta);
+      },
+    },
+    methods: {
+      displayDate,
+      // the #author slot counts only if it has text, so an empty one shows no name
+      hasAuthor() {
+        return vnodeText(this.$slots.author?.()) !== "";
+      },
     },
   };
 </script>

@@ -107,7 +107,8 @@
         voluptate ducimus repellat necessitatibus?
       </p>
     </template>
-    <template #author>Your Name</template>
+    <!-- add the page author, or leave this out to show no name:
+    <template #author>Your Name</template> -->
   </Layout>
 </template>
 

@@ -16,9 +16,9 @@
     <template #content>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">SubHeading</SHeading>
-
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2"
+            >How should you choose words for your interface?</SHeading
+          >
           <ul>
             <li>
               <strong>Be Active</strong> — Use calls to action (e.g., Register

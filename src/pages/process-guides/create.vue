@@ -53,7 +53,9 @@
             </li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2"
+            >How should you approach creating the product?</SHeading
+          >
           <SHeading level="3">Set yourself up for success.</SHeading>
           <ul>
             <li>
@@ -389,7 +391,9 @@
           </PageCallout>
         </div>
 
-        <SHeading level="2">Common Pitfalls</SHeading>
+        <SHeading level="2"
+          >What are common pitfalls when creating the product?</SHeading
+        >
         <div>
           <SHeading level="3">Process set up to fail</SHeading>
           <ul>

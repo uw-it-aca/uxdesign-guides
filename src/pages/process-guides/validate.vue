@@ -47,7 +47,9 @@
             inform marketing initiatives?
           </p>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2"
+            >How should you validate design decisions?</SHeading
+          >
           <ol>
             <li>
               <strong
@@ -359,7 +361,9 @@
             </li>
           </ol>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2"
+            >What are common pitfalls when validating designs?</SHeading
+          >
 
           <SHeading level="3">Process Pitfalls</SHeading>
           <ul>

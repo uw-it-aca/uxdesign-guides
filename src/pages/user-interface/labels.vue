@@ -17,8 +17,7 @@
     <template #content>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">SubHeading</SHeading>
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2">How should you write interface labels?</SHeading>
           <ul>
             <li>
               <strong>Leverage labels</strong> — Labels are a particularly

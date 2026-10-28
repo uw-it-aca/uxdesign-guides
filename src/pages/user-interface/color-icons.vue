@@ -24,7 +24,7 @@
             the intentional use of visual style
           </p>
 
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2">How should you use color and icons?</SHeading>
           <ul>
             <li>
               <strong>Minimize Decoration</strong> — Reduce the cognitive need

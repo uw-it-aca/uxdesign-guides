@@ -40,7 +40,7 @@
             we present here.
           </PageCallout>
 
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2">How do you choose the right page type?</SHeading>
           <ul>
             <li>
               <strong>Be clear on a page’s purpose</strong>

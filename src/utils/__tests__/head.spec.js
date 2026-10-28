@@ -5,7 +5,9 @@ import {
   SITE_URL,
   breadcrumbTrail,
   canonicalUrl,
+  displayDate,
   pageHead,
+  pageModified,
   serializeJsonLd,
   structuredData,
   summarize,
@@ -212,5 +214,35 @@ describe("serializeJsonLd", () => {
 
     expect(out).not.toContain("<");
     expect(JSON.parse(out).name).toBe("</script><script>alert(1)");
+  });
+});
+
+describe("pageModified", () => {
+  it("finds a page's date with or without a trailing slash", () => {
+    expect(pageModified("/solstice/components/forms/input", PAGES)).toBe(
+      "2026-10-22T11:19:05-07:00",
+    );
+    expect(pageModified("/solstice/components/forms/input/", PAGES)).toBe(
+      "2026-10-22T11:19:05-07:00",
+    );
+    expect(pageModified("/", PAGES)).toBe("2026-01-01T00:00:00Z");
+  });
+
+  it("is undefined when the date or the page is unknown", () => {
+    expect(pageModified("/solstice", PAGES)).toBeUndefined();
+    expect(pageModified("/nope")).toBeUndefined();
+  });
+});
+
+describe("displayDate", () => {
+  it("formats the calendar date as written, ignoring the time zone", () => {
+    expect(displayDate("2026-10-22T11:19:05-07:00")).toBe("October 22, 2026");
+    // late evening west of UTC is already the next day in UTC
+    expect(displayDate("2026-10-22T23:30:00-07:00")).toBe("October 22, 2026");
+  });
+
+  it("returns null without a date", () => {
+    expect(displayDate(undefined)).toBe(null);
+    expect(displayDate("not a date")).toBe(null);
   });
 });

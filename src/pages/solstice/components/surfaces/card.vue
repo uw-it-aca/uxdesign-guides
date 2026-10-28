@@ -388,7 +388,6 @@
         </template>
       </CodeBlock>
     </template>
-    <template #author>Your Name</template>
   </Layout>
 </template>
 

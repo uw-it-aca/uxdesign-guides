@@ -29,7 +29,7 @@
       </div>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">Great UX requires investment</SHeading>
+          <SHeading level="2">What does great UX require?</SHeading>
           <p>
             To cultivate an environment that allows UX-focused teams to thrive,
             you need team alignment and administrative buy-in.

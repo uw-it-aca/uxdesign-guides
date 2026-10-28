@@ -118,6 +118,37 @@ export function breadcrumbTrail(path, title, pages) {
 }
 
 /**
+ * Last-modified date of a page, from `virtual:page-meta`.
+ *
+ * @param {string} path router path without the base
+ * @param {Record<string, { modified?: string }>} [pages]
+ * @returns {string|undefined} ISO 8601 date, e.g. `2026-10-22T11:19:05-07:00`
+ */
+export function pageModified(path, pages = {}) {
+  return pages[path.replace(/\/+$/, "") || "/"]?.modified;
+}
+
+/**
+ * Format an ISO 8601 date for readers, e.g. "October 22, 2026". The calendar
+ * date is taken from the string as written, without converting time zones,
+ * so the build and the browser always show the same day, and it matches the
+ * `dateModified` in the structured data.
+ *
+ * @param {string} [iso]
+ * @returns {string|null}
+ */
+export function displayDate(iso) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso ?? "");
+  if (!match) return null;
+
+  const [, year, month, day] = match.map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
+/**
  * schema.org structured data (JSON-LD) for a page: who publishes it, which
  * site it belongs to, where it sits in the site, and when it last changed.
  * Search and answer engines use this to attribute and date what they cite.
@@ -158,7 +189,7 @@ export function structuredData({ title, path, description, pages = {} }) {
   };
 
   const isHome = canonicalUrl(path) === home;
-  const modified = pages[path.replace(/\/+$/, "") || "/"]?.modified;
+  const modified = pageModified(path, pages);
 
   const page = {
     "@type": isHome ? "WebPage" : "TechArticle",

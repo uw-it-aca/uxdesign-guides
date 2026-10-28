@@ -39,7 +39,7 @@
 
       <section class="mb-4">
         <SHeading level="2" class="display-6 ff-encode-sans mb-3" id="why"
-          >Why it's important</SHeading
+          >Why is information design important?</SHeading
         >
 
         <section class="mb-3">
@@ -106,7 +106,7 @@
           level="2"
           class="display-6 ff-encode-sans mb-3"
           id="prioritize"
-          >Things to prioritize</SHeading
+          >What should you prioritize first?</SHeading
         >
         <p>If time is limited, focus on addressing these high-impact items:</p>
         <ol>
@@ -255,7 +255,7 @@
 
       <section class="mb-4">
         <SHeading level="2" class="display-6 ff-encode-sans mb-3" id="chunking"
-          >Chunking content</SHeading
+          >What is content chunking?</SHeading
         >
         <p>
           Chunking refers to breaking information into meaningful, visually
@@ -331,7 +331,7 @@
           level="2"
           class="display-6 ff-encode-sans mb-3"
           id="disclosure"
-          >Using tabs & accordions</SHeading
+          >When should you use tabs and accordions?</SHeading
         >
 
         <section class="mb-3">
@@ -521,7 +521,7 @@
           level="2"
           class="display-6 ff-encode-sans mb-3"
           id="instructions"
-          >When giving instructions</SHeading
+          >How should you format instructions?</SHeading
         >
         <p>
           Formatting instructions that are easy to scan, follow, and use in the
