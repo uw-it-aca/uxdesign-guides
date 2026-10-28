@@ -50,14 +50,13 @@
       <BOffcanvas v-model="offcanvasStates.first" placement="end">
         <slot name="header"><h2>Purple Chatbot</h2></slot>
         <iframe
-          src="https://nebulaone-pilot.uw.edu/chat/41d6588d-541a-4e33-89d7-d290ff873be7/true?silentLogin=true&showModelName=true&showDisclaimer=false"
+          src="https://purple.uw.edu/chat/e0c28dde-a219-4199-9763-1f4dfd093927/true?silentLogin=true&showModelName=true&showDisclaimer=false"
           frameborder="0"
-          title="Char's UX Agent"
+          title="UX@UW Design Agent"
           loading="lazy"
           style="
-            aspect-ratio: 2 / 6;
             display: block;
-            max-height: 100vh;
+            height: calc(100dvh - 8rem);
             width: 100%;
             border-radius: 8px;
           "
@@ -68,13 +67,16 @@
       <BOffcanvas v-model="offcanvasStates.second" placement="end">
         <slot name="header"><h2>Feedback Form</h2></slot>
         <iframe
-          width="640px"
-          height="480px"
           src="https://forms.office.com/Pages/ResponsePage.aspx?id=W9229i_wGkSZoBYqxQYL0lR1xshOYiRLm33c8S43MgBUNkVOSUg0RkNBMFAwSkZaMkNJMDlYTURHUS4u&embed=true"
           frameborder="0"
           marginwidth="0"
           marginheight="0"
-          style="border: none; max-width: 100%; max-height: 100vh"
+          style="
+            display: block;
+            height: calc(100dvh - 8rem);
+            width: 100%;
+            border-radius: 8px;
+          "
           allowfullscreen
           webkitallowfullscreen
           mozallowfullscreen
