@@ -403,7 +403,6 @@
         voluptate ducimus repellat necessitatibus?
       </p>
     </template>
-    <template #author>Your Name</template>
   </Layout>
 </template>
 

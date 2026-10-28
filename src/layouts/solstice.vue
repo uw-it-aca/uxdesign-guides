@@ -69,9 +69,15 @@
 
           <slot name="content" />
 
-          <div v-if="$slots.author" class="small py-1">
+          <!-- MARK: last updated. The date matches the dateModified in the
+               page's structured data; the name is the page's author -->
+          <div v-if="modified || hasAuthor()" class="small py-1">
             <div class="text-muted">
-              Last updated by: <slot name="author" />
+              Last updated
+              <time v-if="modified" :datetime="modified">{{
+                displayDate(modified)
+              }}</time>
+              <template v-if="hasAuthor()"> by {{ author.trim() }}</template>
             </div>
           </div>
         </div>
@@ -89,6 +95,14 @@
 <script>
   import { SColorMode, SSidebar, SHeading, SUser } from "solstice-vue";
   import NavMenu from "@/components/NavMenu.vue";
+  import pageMeta from "virtual:page-meta";
+  import {
+    displayDate,
+    pageHead,
+    pageModified,
+    summarize,
+    vnodeText,
+  } from "@/utils/head.js";
 
   export default {
     name: "App",
@@ -106,19 +120,53 @@
         default: "Not specified",
         required: false,
       },
+      // name shown after the "Last updated" date, from the page's data()
+      author: {
+        type: String,
+        default: null,
+      },
+      // meta description; defaults to the text of the #lead slot
+      description: {
+        type: String,
+        default: null,
+      },
+      // keep the page out of search indexes (e.g. the 404 page)
+      noindex: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    // title, description, canonical URL and Open Graph tags, rendered into the
+    // pre-rendered HTML at build time and kept up to date in the browser
+    head() {
+      return pageHead({
+        title: this.pageTitle,
+        siteName: "Solstice",
+        path: this.$route.path,
+        description:
+          this.description ?? summarize(vnodeText(this.$slots.lead?.())),
+        noindex: this.noindex,
+        pages: pageMeta,
+      });
     },
     data() {
       return {
         // automatically set year
         currentYear: new Date().getFullYear(),
-        lastModified: null,
       };
     },
-    mounted: function () {
-      // MARK: constructs page title in the following format "Page Title - AppName"
-      // as a default layout prop
-      document.title = `${this.pageTitle} - Solstice`;
-      //this.lastModified = new Date(document.lastModified).toLocaleString();
+    computed: {
+      // ISO date of the page's last commit, if known (see vite-plugin-page-meta.js)
+      modified() {
+        return pageModified(this.$route.path, pageMeta);
+      },
+    },
+    methods: {
+      displayDate,
+      // an empty author shows no name
+      hasAuthor() {
+        return (this.author ?? "").trim() !== "";
+      },
     },
   };
 </script>

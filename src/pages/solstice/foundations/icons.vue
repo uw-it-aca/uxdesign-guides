@@ -24,7 +24,6 @@
         consequuntur distinctio ipsam nam.
       </p>
     </template>
-    <template #author>Your Name</template>
   </Layout>
 </template>
 

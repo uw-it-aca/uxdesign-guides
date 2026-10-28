@@ -44,6 +44,20 @@ page uses default `<p>` styling; don't stack multiple `.lead` paragraphs on one 
 Paragraphs are capped at a readable max width (see `DefaultLayout`'s lead paragraph,
 `max-width: 85ch`).
 
+### Section headings: questions vs. names
+
+Phrase a guidance section's heading as the question a reader would ask, in
+sentence case, and answer it in the first sentence or two below the heading
+(for example "How should you validate design decisions?" followed by "Schedule
+time for validation as part of your project timeline."). Search and answer
+engines quote pages section by section, and the heading is often the only
+context a quoted passage keeps.
+
+Keep plain noun headings for reference sections that people scan or look up
+by name: "Resources", "Purpose", "Typical Features", "Anatomy", "Variants",
+component and page-type names. Don't turn every heading on a page into a
+question. Table-of-contents labels (`PageContentsItem`) can stay short.
+
 ## Vertical Spacing Scale
 
 A margin-bottom-only convention built on Bootstrap's default spacer utilities
@@ -201,8 +215,8 @@ shell's `py-5` gutter — which is container chrome, not content rhythm.
 ## Layouts
 
 - **`src/layouts/default.vue`** — `STopbarNeo`-based shell used by general (non-Solstice)
-  guide pages. Provides `#navigation`, `#lead`, `#breadcrumb`, `#content`, `#toc`, and
-  `#author` slots. The top nav bar uses `BNav`/`BNavItemDropdown` and sits on the UW
+  guide pages. Provides `#navigation`, `#lead`, `#breadcrumb`, `#content`, and `#toc` slots,
+  and takes the page's `author` as a prop. The top nav bar uses `BNav`/`BNavItemDropdown` and sits on the UW
   brand purple, so nav links need a light foreground (`text-white`/`link-light`) for
   contrast.
 - **`src/layouts/solstice.vue`** — `SSidebar`-based shell used by all `/solstice/**`

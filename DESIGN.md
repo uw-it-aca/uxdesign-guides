@@ -137,8 +137,8 @@ needing breakpoint-aware behavior in script use `vue3-mq` injected as `mq`
 
 **Shells.** `src/layouts/default.vue` (`STopbarNeo`-based) for general guide pages;
 `src/layouts/solstice.vue` (`SSidebar`-based) for all `/solstice/**` pages. Both
-provide `#navigation`, `#lead`, `#breadcrumb`, `#content`, `#toc`, and `#author`
-slots, and both pin the table of contents with `sticky-top`.
+provide `#navigation`, `#lead`, `#breadcrumb`, `#content`, and `#toc` slots, take
+the page's `author` as a prop, and both pin the table of contents with `sticky-top`.
 
 ## Elevation
 

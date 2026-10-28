@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" noindex>
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Sorry, we couldn't find the page you were looking for.

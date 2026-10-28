@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/solstice/components">Components</BBreadcrumbItem>
@@ -58,7 +58,6 @@
         voluptate ducimus repellat necessitatibus?
       </p>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -83,6 +82,7 @@
     data() {
       return {
         pageTitle: "Banner",
+        author: "Charlon Palacay",
       };
     },
   };

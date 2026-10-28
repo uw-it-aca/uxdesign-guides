@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/process-guides"
@@ -29,7 +29,7 @@
             <li>Make improvements based on current priorities.</li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2">How should you iterate on a design?</SHeading>
           <div>
             <SHeading level="3">Plan for continual improvement</SHeading>
             <ol>
@@ -119,7 +119,9 @@
             </ol>
           </div>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2"
+            >What are common pitfalls when iterating?</SHeading
+          >
           <div>
             <SHeading level="3">Lack of foresight</SHeading>
             <ul>
@@ -182,7 +184,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -209,13 +210,11 @@
     data() {
       return {
         pageTitle: "Iterate on the Design",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

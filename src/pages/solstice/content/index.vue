@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nisi
       quaerat, molestiae vero doloribus asperiores pariatur fugit eligendi nam
@@ -66,7 +66,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -80,6 +79,7 @@
     data() {
       return {
         pageTitle: "Content",
+        author: "Charlon Palacay",
       };
     },
   };

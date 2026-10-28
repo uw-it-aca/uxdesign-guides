@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
@@ -38,7 +38,6 @@
         </li>
       </ul>
     </template>
-    <template #author>Charlon Palacay</template>
   </Layout>
 </template>
 
@@ -52,6 +51,7 @@
     data() {
       return {
         pageTitle: "Getting Started",
+        author: "Charlon Palacay",
       };
     },
   };

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         The UCD process continuously aligns user needs and business goals
@@ -29,7 +29,7 @@
       </div>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">Great UX requires investment</SHeading>
+          <SHeading level="2">What does great UX require?</SHeading>
           <p>
             To cultivate an environment that allows UX-focused teams to thrive,
             you need team alignment and administrative buy-in.
@@ -75,7 +75,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -97,13 +96,11 @@
     data() {
       return {
         pageTitle: "The Process of Creating UX",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

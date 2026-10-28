@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/user-interface"
@@ -40,7 +40,7 @@
             we present here.
           </PageCallout>
 
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2">How do you choose the right page type?</SHeading>
           <ul>
             <li>
               <strong>Be clear on a page’s purpose</strong>
@@ -316,7 +316,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -345,13 +344,11 @@
     data() {
       return {
         pageTitle: "Page Types",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

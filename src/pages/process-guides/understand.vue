@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/process-guides"
@@ -41,7 +41,7 @@
             </li>
           </ul>
 
-          <SHeading level="2">Recommended Approach</SHeading>
+          <SHeading level="2">How do you understand the problem space?</SHeading>
 
           <ol>
             <li>
@@ -192,7 +192,7 @@
             proceed.
           </PageCallout>
 
-          <SHeading level="2">Common Pitfalls</SHeading>
+          <SHeading level="2">What are common pitfalls when defining the problem?</SHeading>
 
           <SHeading level="3">General Pitfalls</SHeading>
           <ul>
@@ -390,7 +390,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -419,13 +418,11 @@
     data() {
       return {
         pageTitle: "Understand the Problem Space",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

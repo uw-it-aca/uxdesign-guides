@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #lead>
       <p class="lead" style="max-width: 85ch">
         To create great UX, it will require investment in resources, process &
@@ -11,7 +11,7 @@
     <template #content>
       <div class="row mb-3">
         <div class="col">
-          <SHeading level="2">ROI for your organization</SHeading>
+          <SHeading level="2">How does UX benefit your organization?</SHeading>
           <p style="max-width: 85ch">
             “Good user experience is clearly good for business. Studies show
             that companies that invest in UX see a lower cost of customer
@@ -53,7 +53,7 @@
             </li>
           </ul>
 
-          <SHeading level="2">User's ROI</SHeading>
+          <SHeading level="2">How does UX benefit your users?</SHeading>
           <p style="max-width: 85ch">
             "True user experience goes far beyond giving customers what they say
             they want, or providing checklist features." - The Definition of
@@ -80,7 +80,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -100,13 +99,11 @@
     data() {
       return {
         pageTitle: "Why invest in UX?",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },

@@ -1,5 +1,5 @@
 <template>
-  <Layout :page-title="pageTitle">
+  <Layout :page-title="pageTitle" :author="author">
     <template #breadcrumb>
       <BBreadcrumb>
         <BBreadcrumbItem to="/user-interface"
@@ -24,7 +24,7 @@
             the intentional use of visual style
           </p>
 
-          <SHeading level="2">Guiding Principles</SHeading>
+          <SHeading level="2">How should you use color and icons?</SHeading>
           <ul>
             <li>
               <strong>Minimize Decoration</strong> — Reduce the cognitive need
@@ -119,7 +119,6 @@
         </div>
       </div>
     </template>
-    <template #author>William Washington</template>
   </Layout>
 </template>
 
@@ -146,13 +145,11 @@
     data() {
       return {
         pageTitle: "Color & Icons",
+        author: "William Washington",
       };
     },
     methods: {},
     mounted: function () {
-      // MARK: override layout pageTitle prop
-      document.title = this.appName;
-
       // MARK: set the dev environment for feature flagging
       // this.isDev = getDevEnv();
     },
