@@ -1,0 +1,10 @@
+{
+  "description": "The imported project’s app purpose and audience are not specified; it provides a bootstrapped foundation ready for deployment and preview verification.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
